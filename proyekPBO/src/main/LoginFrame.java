@@ -4,6 +4,8 @@
  */
 package main;
 
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 /**
  *
  * @author kadekpurna22
@@ -210,6 +212,22 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void masukButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukButtonActionPerformed
         // TODO add your handling code here:
+        String email = String.valueOf(emailTextField.getText());
+        String pass = String.valueOf(passPasswordField.getText());
+        try{
+            String sql = "SELECT * FROM user WHERE email='"+email+"'and pass='"+pass+"'";
+            java.sql.Connection conn = (Connection)my_DB.getConnection();
+            java.sql.Statement stmt = conn.createStatement();
+            java.sql.ResultSet rest = stmt.executeQuery(sql);
+            
+            if (rest.next()){
+                JOptionPane.showMessageDialog(null, "Login berhasil");
+            }else{
+               JOptionPane.showMessageDialog(null, "Login gagal", "Error", JOptionPane.ERROR_MESSAGE); 
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Login gagal", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_masukButtonActionPerformed
 
     /**
