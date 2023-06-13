@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author kadekpurna22
  */
-public class my_DB {
+public class My_DB {
     private static final String URL = "jdbc:mysql://localhost:3306/proyekpbo";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";

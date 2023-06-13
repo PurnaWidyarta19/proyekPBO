@@ -216,7 +216,7 @@ public class LoginFrame extends javax.swing.JFrame {
         String pass = String.valueOf(passPasswordField.getText());
         try{
             String sql = "SELECT * FROM user WHERE email='"+email+"'and pass='"+pass+"'";
-            java.sql.Connection conn = (Connection)my_DB.getConnection();
+            java.sql.Connection conn = (Connection)My_DB.getConnection();
             java.sql.Statement stmt = conn.createStatement();
             java.sql.ResultSet rest = stmt.executeQuery(sql);
             
