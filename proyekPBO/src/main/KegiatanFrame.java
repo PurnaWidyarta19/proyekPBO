@@ -69,7 +69,9 @@ public class KegiatanFrame extends javax.swing.JFrame {
         jLabel2.setText("Daftar kegiatan yang dilaksanakan UKM Cheby");
 
         rincianTextArea.setColumns(20);
+        rincianTextArea.setLineWrap(true);
         rincianTextArea.setRows(5);
+        jScrollPane.setViewportView(rincianTextArea);
 
         kegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih daftar kegiatan...", "Pelatihan Terbuka Renang", "Pelatihan Terbuka RC", "Pendakian Umum", " " }));
         kegiatanComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -141,19 +143,18 @@ public class KegiatanFrame extends javax.swing.JFrame {
     private void kegiatanComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kegiatanComboBoxActionPerformed
         // TODO add your handling code here:
         String selectedMenu = (String) kegiatanComboBox.getSelectedItem();
-        
         switch(selectedMenu){
             case "Pelatihan Terbuka Renang":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka renang adalah kegiatan yang bisa di"
-                        + "ikuti oleh semua mahasiswa STIS");
+                        + " ikuti oleh semua mahasiswa STIS");
                 break;
             case "Pelatihan Terbuka RC":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka RC adalah kegiatan yang bisa di"
-                        + "ikuti oleh semua mahasiswa STIS");
+                        + " ikuti oleh semua mahasiswa STIS");
                 break;
             case "Pendakian Umum":
                 rincianTextArea.setText("Kegiatan pendakian adalah kegiatan yang bisa di ikuti oleh semua mahasiswa STIS"
-                        + "dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
+                        + " dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
                 break;
             default:
                 rincianTextArea.setText(" ");
