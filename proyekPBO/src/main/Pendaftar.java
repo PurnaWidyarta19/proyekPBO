@@ -10,9 +10,13 @@ import java.io.Serializable;
  *
  * @author kadekpurna22
  */
-public class PendaftarKegiatan implements Serializable {
-    private String nim, nama, jk, tingkat, alamat, email, no_telp, ttl; 
+public class Pendaftar implements Serializable {
+    private String namaKegiatan, nim, nama, jk, tingkat, alamat, email, no_telp, ttl; 
 
+    public String getNamaKegiatan(){
+        return namaKegiatan;
+    }
+    
     public String getNim() {
         return nim;
     }
@@ -43,6 +47,10 @@ public class PendaftarKegiatan implements Serializable {
 
     public String getTtl() {
         return ttl;
+    }
+    
+    public void setNamaKegiatan(String namaKegiatan){
+        this.namaKegiatan = namaKegiatan;
     }
 
     public void setNim(String nim) {

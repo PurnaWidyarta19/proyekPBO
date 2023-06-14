@@ -73,7 +73,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
         rincianTextArea.setRows(5);
         jScrollPane.setViewportView(rincianTextArea);
 
-        kegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih daftar kegiatan...", "Pelatihan Terbuka Renang", "Pelatihan Terbuka RC", "Pendakian Umum", " " }));
+        kegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih daftar kegiatan...", "Pelatihan Terbuka Renang", "Pelatihan Terbuka RC", "Pendakian Umum", "PDT (Pembangunan Desa Tertinggal)", " " }));
         kegiatanComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kegiatanComboBoxActionPerformed(evt);
@@ -155,6 +155,10 @@ public class KegiatanFrame extends javax.swing.JFrame {
             case "Pendakian Umum":
                 rincianTextArea.setText("Kegiatan pendakian adalah kegiatan yang bisa di ikuti oleh semua mahasiswa STIS"
                         + " dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
+                break;
+            case "PDT (Pembangunan Desa Tertinggal)":
+                rincianTextArea.setText("Kegiatan ini adalah open recruitment panitia yang bersedia menjadi relawan"
+                        +"untuk membantu pembangunan desa tertinggal" );
                 break;
             default:
                 rincianTextArea.setText(" ");

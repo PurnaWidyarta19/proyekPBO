@@ -4,6 +4,14 @@
  */
 package main;
 
+import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 /**
  *
  * @author kadekpurna22
@@ -15,6 +23,7 @@ public class FormPendaftaran extends javax.swing.JFrame {
      */
     public FormPendaftaran() {
         initComponents();
+        setResizable(false);
     }
 
     /**
@@ -39,7 +48,6 @@ public class FormPendaftaran extends javax.swing.JFrame {
         emailLabel = new javax.swing.JLabel();
         tlpnLabel = new javax.swing.JLabel();
         ttlLabel = new javax.swing.JLabel();
-        namaKegiatanTextField = new javax.swing.JTextField();
         nimTextField = new javax.swing.JTextField();
         namaTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +60,8 @@ public class FormPendaftaran extends javax.swing.JFrame {
         ttlDateChooser = new com.toedter.calendar.JDateChooser();
         lakiRadioButton = new javax.swing.JRadioButton();
         perempuanRadioButton = new javax.swing.JRadioButton();
+        closeLabel = new javax.swing.JLabel();
+        namaKegiatanComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,9 +101,9 @@ public class FormPendaftaran extends javax.swing.JFrame {
         ttlLabel.setForeground(new java.awt.Color(255, 255, 255));
         ttlLabel.setText("Tanggal Lahir");
 
-        namaKegiatanTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                namaKegiatanTextFieldActionPerformed(evt);
+        nimTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nimTextFieldKeyTyped(evt);
             }
         });
 
@@ -101,6 +111,12 @@ public class FormPendaftaran extends javax.swing.JFrame {
         alamatTextArea.setRows(5);
         alamatTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(alamatTextArea);
+
+        tlpnTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tlpnTextFieldKeyTyped(evt);
+            }
+        });
 
         hapusButton.setText("Hapus");
         hapusButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +126,11 @@ public class FormPendaftaran extends javax.swing.JFrame {
         });
 
         daftarButton.setText("Daftar");
+        daftarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarButtonActionPerformed(evt);
+            }
+        });
 
         tingkatComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
@@ -121,14 +142,19 @@ public class FormPendaftaran extends javax.swing.JFrame {
         perempuanRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         perempuanRadioButton.setText("Perempuan");
 
+        closeLabel.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\close.png")); // NOI18N
+        closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeLabelMouseClicked(evt);
+            }
+        });
+
+        namaKegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih kegiatan.....", "Pelatihan Internal Renang", "Pelatihan Internal RC", "Pendakian Umum", "PDT (Pembangunan Desa Tertinggal)" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(98, 98, 98))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,32 +176,42 @@ public class FormPendaftaran extends javax.swing.JFrame {
                             .addComponent(ttlLabel)
                             .addComponent(emailLabel))
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel2)
-                                .addComponent(lakiRadioButton)
-                                .addComponent(perempuanRadioButton)
-                                .addComponent(tingkatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(namaTextField)
-                                .addComponent(nimTextField)
-                                .addComponent(namaKegiatanTextField)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                                .addComponent(ttlDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tlpnTextField)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(emailTextField)
+                            .addComponent(jLabel2)
+                            .addComponent(lakiRadioButton)
+                            .addComponent(perempuanRadioButton)
+                            .addComponent(tingkatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(namaTextField)
+                            .addComponent(nimTextField)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                            .addComponent(ttlDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tlpnTextField)
+                            .addComponent(namaKegiatanComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(57, 57, 57)
+                .addComponent(closeLabel)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(closeLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namaKegiatanLabel)
-                    .addComponent(namaKegiatanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(namaKegiatanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(namaKegiatanLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nimLabel)
@@ -210,7 +246,7 @@ public class FormPendaftaran extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ttlLabel)
                     .addComponent(ttlDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hapusButton)
                     .addComponent(daftarButton))
@@ -233,22 +269,67 @@ public class FormPendaftaran extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void namaKegiatanTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaKegiatanTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_namaKegiatanTextFieldActionPerformed
-
     private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
         // TODO add your handling code here:
-        namaKegiatanTextField.setEditable(true);
+        namaKegiatanComboBox.setSelectedItem(this);
         nimTextField.setText("");
         namaTextField.setText("");
         jkbuttonGroup.clearSelection();
-        tingkatComboBox.setSelectedIndex(1);
+        tingkatComboBox.setSelectedIndex(0);
         alamatTextArea.setText("");
         emailTextField.setText("");
         tlpnTextField.setText("");
         ttlDateChooser.setCalendar(null);
     }//GEN-LAST:event_hapusButtonActionPerformed
+
+    private void tlpnTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpnTextFieldKeyTyped
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if(!(Character.isDigit(ch))){
+            evt.consume();
+        }
+    }//GEN-LAST:event_tlpnTextFieldKeyTyped
+
+    private void nimTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nimTextFieldKeyTyped
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if (!Character.isDigit(ch) || tlpnTextField.getText().length() >= 9) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_nimTextFieldKeyTyped
+
+    private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_closeLabelMouseClicked
+
+    private void daftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarButtonActionPerformed
+        // TODO add your handling code here:
+        Pendaftar mhs = new Pendaftar();
+        mhs.setNamaKegiatan(namaKegiatanComboBox.getSelectedItem().toString());
+        mhs.setNim(nimTextField.getText());
+        mhs.setNama(namaTextField.getText());
+        if(lakiRadioButton.isSelected()){
+            mhs.setJk("Laki-Laki");
+        }
+        if(perempuanRadioButton.isSelected()){
+            mhs.setJk("Perempuan");
+        }
+        mhs.setTingkat(tingkatComboBox.getSelectedItem().toString());
+        mhs.setAlamat(alamatTextArea.getText());
+        mhs.setEmail(emailTextField.getText());
+        mhs.setNo_telp(tlpnTextField.getText());
+        String kalender = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(kalender);
+        String tanggal = String.valueOf(fm.format(ttlDateChooser.getDate()));
+        mhs.setTtl(tanggal);
+        try{
+            Database.getInstance().insertPendaftar(mhs);
+            JOptionPane.showMessageDialog(null, "Anda telah Mendaftar");
+        }catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_daftarButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +369,7 @@ public class FormPendaftaran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JTextArea alamatTextArea;
+    private javax.swing.JLabel closeLabel;
     private javax.swing.JButton daftarButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
@@ -299,8 +381,8 @@ public class FormPendaftaran extends javax.swing.JFrame {
     private javax.swing.JLabel jkLabel;
     private javax.swing.ButtonGroup jkbuttonGroup;
     private javax.swing.JRadioButton lakiRadioButton;
+    private javax.swing.JComboBox<String> namaKegiatanComboBox;
     private javax.swing.JLabel namaKegiatanLabel;
-    private javax.swing.JTextField namaKegiatanTextField;
     private javax.swing.JLabel namaLabel;
     private javax.swing.JTextField namaTextField;
     private javax.swing.JLabel nimLabel;

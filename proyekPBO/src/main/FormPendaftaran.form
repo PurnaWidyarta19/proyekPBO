@@ -56,11 +56,6 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -84,38 +79,51 @@
                               <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="emailTextField" min="-2" pref="255" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lakiRadioButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="perempuanRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tingkatComboBox" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="namaTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="nimTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="namaKegiatanTextField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" pref="255" max="32767" attributes="0"/>
-                                  <Component id="ttlDateChooser" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tlpnTextField" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="emailTextField" max="32767" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lakiRadioButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="perempuanRadioButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="tingkatComboBox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="namaTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="nimTextField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="255" max="32767" attributes="0"/>
+                              <Component id="ttlDateChooser" alignment="0" max="32767" attributes="0"/>
+                              <Component id="tlpnTextField" max="32767" attributes="0"/>
+                              <Component id="namaKegiatanComboBox" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="20" max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <Component id="closeLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="closeLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="108" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="namaKegiatanComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="namaKegiatanLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="namaKegiatanTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -159,7 +167,7 @@
                       <Component id="ttlLabel" min="-2" max="-2" attributes="0"/>
                       <Component id="ttlDateChooser" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace pref="49" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="hapusButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="daftarButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -260,12 +268,10 @@
             <Property name="text" type="java.lang.String" value="Tanggal Lahir"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="namaKegiatanTextField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="namaKegiatanTextFieldActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="nimTextField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nimTextFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="namaTextField">
         </Component>
@@ -288,6 +294,12 @@
         <Component class="javax.swing.JTextField" name="emailTextField">
         </Component>
         <Component class="javax.swing.JTextField" name="tlpnTextField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tlpnTextFieldKeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="hapusButton">
           <Properties>
@@ -301,6 +313,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Daftar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="daftarButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="tingkatComboBox">
           <Properties>
@@ -340,6 +355,32 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Perempuan"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="closeLabel">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\Documents\Java\proyekPBO\proyekPBO\src\assets\close.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="closeLabelMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="namaKegiatanComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Pilih kegiatan....."/>
+                <StringItem index="1" value="Pelatihan Internal Renang"/>
+                <StringItem index="2" value="Pelatihan Internal RC"/>
+                <StringItem index="3" value="Pendakian Umum"/>
+                <StringItem index="4" value="PDT (Pembangunan Desa Tertinggal)"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
