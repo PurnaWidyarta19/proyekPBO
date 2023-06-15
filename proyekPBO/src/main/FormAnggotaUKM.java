@@ -18,12 +18,46 @@ import javax.swing.JOptionPane;
  * @author kadekpurna22
  */
 public class FormAnggotaUKM extends javax.swing.JInternalFrame {
-
+    private void clear_form(){
+        nimTextField.setText("");
+        namaTextField.setText("");
+        kelasTextField.setText("");
+        alamatTextArea.setText("");
+        emailTextField.setText("");
+        tlpnTextField.setText("");
+        tempatLahirTextField.setText("");
+        tanggalLahirDateChooser.setCalendar(null);
+    }
+    
+    private void show_data(){
+        DefaultTableModel dtm = (DefaultTableModel)
+        dataAnggotaTable.getModel();
+        
+        //refresh tabel
+        while(dtm.getRowCount()>0){
+            dtm.removeRow(0);
+        }
+        try{
+            int no = 1;
+            //isi tabel
+            for(Mahasiswa mhs:
+                Database.getInstance().getListMahasiswa()){
+                dtm.addRow(new Object[]{});
+            }       
+        }catch(SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
     /**
      * Creates new form FormAnggotaUKM
      */
     public FormAnggotaUKM() {
         initComponents();
+        clear_form();
+        show_data();
+        // remove the title bar of a JInternalFrame in Java Swing
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
+        setResizable(true);
     }
 
     /**
@@ -54,18 +88,18 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         tlpnTextField = new javax.swing.JTextField();
         tempatLahirTextField = new javax.swing.JTextField();
         tanggalLahirDateChooser = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        insertButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        dataAnggotaTable = new javax.swing.JTable();
+        hapusButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        filterButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(109, 121, 115));
 
         jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 14)); // NOI18N
         jLabel1.setText("Insert Data Mahasiswa");
@@ -98,13 +132,13 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         alamatTextArea.setRows(5);
         jScrollPane1.setViewportView(alamatTextArea);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Insert");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        insertButton.setBackground(new java.awt.Color(204, 204, 204));
+        insertButton.setText("Insert");
+        insertButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Clear");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearButton.setBackground(new java.awt.Color(204, 204, 204));
+        clearButton.setText("Clear");
+        clearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,17 +160,20 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                     .addComponent(nimLabel))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tanggalLahirDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tempatLahirTextField, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(jButton2)
+                        .addComponent(clearButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(25, 25, 25))))
+                        .addComponent(insertButton)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(tanggalLahirDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(tempatLahirTextField)))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,14 +230,14 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                             .addComponent(tanggalLahirDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
+                            .addComponent(clearButton)
+                            .addComponent(insertButton))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel2.setBackground(new java.awt.Color(109, 121, 115));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        dataAnggotaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -211,27 +248,32 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                 "NIM", "Nama", "Kelas", "Alamat", "Email", "No.Telephone", "Tempat Lahir", "Tanggal Lahir"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        dataAnggotaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dataAnggotaTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(dataAnggotaTable);
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setText("Hapus Data");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hapusButton.setBackground(new java.awt.Color(204, 204, 204));
+        hapusButton.setText("Hapus Data");
+        hapusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setText("Edit Data");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setBackground(new java.awt.Color(204, 204, 204));
+        editButton.setText("Edit Data");
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Filter Data");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        filterButton.setBackground(new java.awt.Color(204, 204, 204));
+        filterButton.setText("Filter Data");
+        filterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        filterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                filterButtonActionPerformed(evt);
             }
         });
 
@@ -244,11 +286,11 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(hapusButton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(editButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(filterButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -258,9 +300,9 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(hapusButton)
+                    .addComponent(editButton)
+                    .addComponent(filterButton))
                 .addContainerGap())
         );
 
@@ -270,25 +312,82 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+        DefaultTableModel dtm = (DefaultTableModel) dataAnggotaTable.getModel();
+        Mahasiswa mhs = new Mahasiswa();
+        mhs.setNim(nimTextField.getText());
+        mhs.setNama(namaTextField.getText());
+        mhs.setKelas(kelasTextField.getText());
+        mhs.setAlamat(alamatTextArea.getText());
+        mhs.setEmail(emailTextField.getText());
+        mhs.setTlpn(tlpnTextField.getText());
+        mhs.setTempatLahir(tempatLahirTextField.getText());
+        
+        String tanggal = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(tanggal);
+        String date = String.valueOf(fm.format(tanggalLahirDateChooser.getDate()));
+        mhs.setTanggalLahir(date);
+        String nim = nimTextField.getText();
+        
+        try{
+            Database.getInstance().updateMahasiswa(mhs, nim);
+            JOptionPane.showMessageDialog(this, "Data berhasil di update");
+            show_data();
+            clear_form();
+        }catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void filterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_filterButtonActionPerformed
+
+    private void dataAnggotaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataAnggotaTableMouseClicked
+        // TODO add your handling code here:
+        int baris = dataAnggotaTable.rowAtPoint(evt.getPoint());
+        String nim = dataAnggotaTable.getValueAt(baris, 1).toString();
+        nimTextField.setText(nim);
+        
+        String nama = dataAnggotaTable.getValueAt(baris, 2).toString();
+        namaTextField.setText(nama);
+        
+        String kelas = dataAnggotaTable.getValueAt(baris, 3).toString();
+        kelasTextField.setText(kelas);
+        
+        String alamat = dataAnggotaTable.getValueAt(baris, 4).toString();
+        alamatTextArea.setText(alamat);
+        
+        String email = dataAnggotaTable.getValueAt(baris, 5).toString();
+        emailTextField.setText(email);
+        
+        String tlpn = dataAnggotaTable.getValueAt(baris, 6).toString();
+        tlpnTextField.setText(tlpn);
+        
+        String tempat_lahir = dataAnggotaTable.getValueAt(baris, 7).toString();
+        tempatLahirTextField.setText(tempat_lahir);
+        
+        String tanggal = "yyyy-MM-dd";
+        try{
+            Date date = new SimpleDateFormat(tanggal).parse((String)dataAnggotaTable.getValueAt(baris, 8).toString());
+            tanggalLahirDateChooser.setDate(date);
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_dataAnggotaTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -328,19 +427,19 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JTextArea alamatTextArea;
+    private javax.swing.JButton clearButton;
+    private javax.swing.JTable dataAnggotaTable;
+    private javax.swing.JButton editButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton filterButton;
+    private javax.swing.JButton hapusButton;
+    private javax.swing.JButton insertButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel kelasLabel;
     private javax.swing.JTextField kelasTextField;
     private javax.swing.JLabel namaLabel;
