@@ -124,7 +124,7 @@ public class Database implements Serializable{
     public void updateMahasiswa(Mahasiswa mahasiswa, String nim) throws SQLException{
         Connection conn = getConnection();
         try{
-            String sql = "UPDATE anggota SET nim=?,nama=?,kelas=?,alamat?,email=?,tlpn=?,tempat_lahir=?,tanggal_lahir=?";
+            String sql = "UPDATE anggota SET nim=?,nama=?,kelas=?,alamat=?,email=?,tlpn=?,tempat_lahir=?,tanggal_lahir=? WHERE nim=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, mahasiswa.getNim());
             pstmt.setString(2, mahasiswa.getNama());
@@ -134,6 +134,8 @@ public class Database implements Serializable{
             pstmt.setString(6, mahasiswa.getTlpn());
             pstmt.setString(7, mahasiswa.getTempatLahir());
             pstmt.setString(8, mahasiswa.getTanggalLahir());
+            pstmt.setString(9, nim); // Specify the original nim value as the WHERE condition
+            
             pstmt.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();
@@ -147,7 +149,7 @@ public class Database implements Serializable{
     public void deteleMahasiswa(String nim) throws SQLException{
         Connection conn = getConnection();
         try{
-            String sql = "DELETE from anggota WHERE nim = ?";
+            String sql = "DELETE FROM anggota WHERE nim = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nim);
             pstmt.executeUpdate();

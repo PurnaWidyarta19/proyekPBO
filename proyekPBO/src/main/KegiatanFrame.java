@@ -15,6 +15,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
      */
     public KegiatanFrame() {
         initComponents();
+        setResizable(false);
     }
 
     /**
@@ -70,9 +71,14 @@ public class KegiatanFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Daftar kegiatan yang dilaksanakan UKM Cheby");
 
+        jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane.setHorizontalScrollBar(null);
+
+        rincianTextArea.setEditable(false);
         rincianTextArea.setColumns(20);
         rincianTextArea.setLineWrap(true);
         rincianTextArea.setRows(5);
+        rincianTextArea.setWrapStyleWord(true);
         jScrollPane.setViewportView(rincianTextArea);
 
         kegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih daftar kegiatan...", "Pelatihan Terbuka Renang", "Pelatihan Terbuka RC", "Pendakian Umum", "PDT (Pembangunan Desa Tertinggal)", " " }));
@@ -98,14 +104,16 @@ public class KegiatanFrame extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(kegiatanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kegiatanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)))
+                        .addContainerGap(20, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +143,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -148,19 +156,20 @@ public class KegiatanFrame extends javax.swing.JFrame {
         switch(selectedMenu){
             case "Pelatihan Terbuka Renang":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka renang adalah kegiatan yang bisa di"
-                        + " ikuti oleh semua mahasiswa STIS");
+                        + "ikuti oleh semua mahasiswa STIS");
                 break;
             case "Pelatihan Terbuka RC":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka RC adalah kegiatan yang bisa di"
-                        + " ikuti oleh semua mahasiswa STIS");
+                        + "ikuti oleh semua mahasiswa STIS");
                 break;
             case "Pendakian Umum":
                 rincianTextArea.setText("Kegiatan pendakian adalah kegiatan yang bisa di ikuti oleh semua mahasiswa STIS"
-                        + " dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
+                        + "dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
                 break;
             case "PDT (Pembangunan Desa Tertinggal)":
                 rincianTextArea.setText("Kegiatan ini adalah open recruitment panitia yang bersedia menjadi relawan"
-                        +"untuk membantu pembangunan desa tertinggal" );
+                        +" untuk membantu pembangunan desa tertinggal. Kagiatan ini tidak dilaksanakan setiap tahun, tetapi" 
+                        +" dilaksanakan pada tahun-tahun tertentu. Ini tergantung atas keputusan UKM GPA Cheby.");
                 break;
             default:
                 rincianTextArea.setText(" ");

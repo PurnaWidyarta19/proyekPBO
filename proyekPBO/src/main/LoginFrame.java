@@ -101,11 +101,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         emailTextField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         emailTextField.setMinimumSize(new java.awt.Dimension(65, 28));
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
 
         passLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passLabel.setText("Password :");
@@ -199,10 +194,6 @@ public class LoginFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailTextFieldActionPerformed
-
     private void masukButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masukButtonActionPerformed
         // TODO add your handling code here:
         String email = String.valueOf(emailTextField.getText());
@@ -215,6 +206,9 @@ public class LoginFrame extends javax.swing.JFrame {
             
             if (rest.next()){
                 JOptionPane.showMessageDialog(null, "Login berhasil");
+                LoginDashboard ld = new LoginDashboard();
+                ld.setVisible(true);
+                dispose();
             }else{
                JOptionPane.showMessageDialog(null, "Login gagal", "Error", JOptionPane.ERROR_MESSAGE); 
             }

@@ -127,6 +127,8 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         tanggalLahirLabel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tanggalLahirLabel.setText("Tanggal Lahir");
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         alamatTextArea.setColumns(20);
         alamatTextArea.setRows(5);
         jScrollPane1.setViewportView(alamatTextArea);
@@ -354,30 +356,30 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
     private void dataAnggotaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataAnggotaTableMouseClicked
         // TODO add your handling code here:
         int baris = dataAnggotaTable.rowAtPoint(evt.getPoint());
-        String nim = dataAnggotaTable.getValueAt(baris, 1).toString();
+        String nim = dataAnggotaTable.getValueAt(baris, 0).toString();
         nimTextField.setText(nim);
         
-        String nama = dataAnggotaTable.getValueAt(baris, 2).toString();
+        String nama = dataAnggotaTable.getValueAt(baris, 1).toString();
         namaTextField.setText(nama);
         
-        String kelas = dataAnggotaTable.getValueAt(baris, 3).toString();
+        String kelas = dataAnggotaTable.getValueAt(baris, 2).toString();
         kelasTextField.setText(kelas);
         
-        String alamat = dataAnggotaTable.getValueAt(baris, 4).toString();
+        String alamat = dataAnggotaTable.getValueAt(baris, 3).toString();
         alamatTextArea.setText(alamat);
         
-        String email = dataAnggotaTable.getValueAt(baris, 5).toString();
+        String email = dataAnggotaTable.getValueAt(baris, 4).toString();
         emailTextField.setText(email);
         
-        String tlpn = dataAnggotaTable.getValueAt(baris, 6).toString();
+        String tlpn = dataAnggotaTable.getValueAt(baris, 5).toString();
         tlpnTextField.setText(tlpn);
         
-        String tempat_lahir = dataAnggotaTable.getValueAt(baris, 7).toString();
+        String tempat_lahir = dataAnggotaTable.getValueAt(baris, 6).toString();
         tempatLahirTextField.setText(tempat_lahir);
         
         String tanggal = "yyyy-MM-dd";
         try{
-            Date date = new SimpleDateFormat(tanggal).parse((String)dataAnggotaTable.getValueAt(baris, 8).toString());
+            Date date = new SimpleDateFormat(tanggal).parse((String)dataAnggotaTable.getValueAt(baris, 7).toString());
             tanggalLahirDateChooser.setDate(date);
         }catch(ParseException e){
             e.printStackTrace();
