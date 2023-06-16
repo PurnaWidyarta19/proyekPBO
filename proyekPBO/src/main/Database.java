@@ -199,7 +199,7 @@ public class Database implements Serializable{
         try{
             String sql = "DELETE FROM pendaftar WHERE nim = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(2, nim);
+            pstmt.setString(1, nim);
             pstmt.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();

@@ -17,7 +17,7 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         DefaultTableModel dtm = (DefaultTableModel)
         pendaftarTable.getModel();
         
-                //refresh tabel
+        //refresh tabel
         while(dtm.getRowCount()>0){
             dtm.removeRow(0);
         }
@@ -37,8 +37,10 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
      */
     public FormMahasiswaP() {
         initComponents();
-        ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
         show_data();
+        // remove the title bar of a JInternalFrame in Java Swing
+        ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
+        setResizable(true);
     }
 
     /**
@@ -181,13 +183,13 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
 
         pendaftarTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nama Kegiatan", "NIM", "Nama", "Jenis Kelamin", "Tingkat", "Alamat", "Email", "No.Telephone"
+                "Nama Kegiatan", "NIM", "Nama", "Jenis Kelamin", "Tingkat", "Alamat", "Email", "No.Telephone", "Tanggal Lahir"
             }
         ));
         jScrollPane1.setViewportView(pendaftarTable);
@@ -204,12 +206,12 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(hapusButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +244,7 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         DefaultTableModel dtm = (DefaultTableModel) pendaftarTable.getModel();
         int i = pendaftarTable.getSelectedRow();
-        String nim = (String) dtm.getValueAt(i, 1);
+        String nim = (String)dtm.getValueAt(i, 1);
         try{
             Database.getInstance().deleteMahasiswaP(nim);
             JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
@@ -250,6 +252,7 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Gagal menghapus data " + JOptionPane.ERROR_MESSAGE);
         }
+        show_data();
     }//GEN-LAST:event_hapusButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed

@@ -77,7 +77,7 @@ public class Pendaftar implements Serializable {
         this.email = email;
     }
 
-    public void setTlpn(String no_telp) {
+    public void setTlpn(String tlpn) {
         this.tlpn = tlpn;
     }
 
