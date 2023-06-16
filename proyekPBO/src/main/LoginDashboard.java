@@ -99,6 +99,11 @@ public class LoginDashboard extends javax.swing.JFrame {
         pendaftarButton.setText("Pendaftar Kegiatan");
         pendaftarButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pendaftarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pendaftarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pendaftarButtonActionPerformed(evt);
+            }
+        });
 
         outButton.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         outButton.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\logout.png")); // NOI18N
@@ -145,10 +150,11 @@ public class LoginDashboard extends javax.swing.JFrame {
                 .addGap(39, 39, 39))
         );
 
-        bodyDesktopPane.setBackground(new java.awt.Color(0, 153, 204));
+        bodyDesktopPane.setBackground(new java.awt.Color(68, 165, 121));
         bodyDesktopPane.setPreferredSize(new java.awt.Dimension(1111, 504));
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Hi admin, semoga harimu cerah :)");
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -238,6 +244,15 @@ public class LoginDashboard extends javax.swing.JFrame {
         fanggota.setSize(bodyDesktopPane.getWidth(), bodyDesktopPane.getHeight());
         fanggota.setVisible(true);
     }//GEN-LAST:event_anggotaButtonActionPerformed
+
+    private void pendaftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendaftarButtonActionPerformed
+        // TODO add your handling code here:
+        FormMahasiswaP fpendaftar = new FormMahasiswaP();
+        bodyDesktopPane.removeAll();
+        bodyDesktopPane.add(fpendaftar);
+        fpendaftar.setSize(bodyDesktopPane.getWidth(), bodyDesktopPane.getHeight());
+        fpendaftar.setVisible(true);
+    }//GEN-LAST:event_pendaftarButtonActionPerformed
 
     /**
      * @param args the command line arguments

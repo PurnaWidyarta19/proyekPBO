@@ -11,10 +11,10 @@ import java.io.Serializable;
  * @author kadekpurna22
  */
 public class Pendaftar implements Serializable {
-    private String namaKegiatan, nim, nama, jk, tingkat, alamat, email, no_telp, ttl; 
+    private String nama_kegiatan, nim, nama, jk, tingkat, alamat, email, tlpn, ttl; 
 
     public String getNamaKegiatan(){
-        return namaKegiatan;
+        return nama_kegiatan;
     }
     
     public String getNim() {
@@ -41,16 +41,16 @@ public class Pendaftar implements Serializable {
         return email;
     }
 
-    public String getNo_telp() {
-        return no_telp;
+    public String getTlpn() {
+        return tlpn;
     }
 
     public String getTtl() {
         return ttl;
     }
     
-    public void setNamaKegiatan(String namaKegiatan){
-        this.namaKegiatan = namaKegiatan;
+    public void setNamaKegiatan(String nama_kegiatan){
+        this.nama_kegiatan = nama_kegiatan;
     }
 
     public void setNim(String nim) {
@@ -77,8 +77,8 @@ public class Pendaftar implements Serializable {
         this.email = email;
     }
 
-    public void setNo_telp(String no_telp) {
-        this.no_telp = no_telp;
+    public void setTlpn(String no_telp) {
+        this.tlpn = tlpn;
     }
 
     public void setTtl(String ttl) {

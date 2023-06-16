@@ -37,20 +37,20 @@ public class Database implements Serializable{
         return DriverManager.getConnection("jdbc:"+DB_TYPE+"://"+DB_HOST+":"+DB_PORT+"/"+DB_NAME,DB_USER,DB_PASS);
     }
     
-    public void insertPendaftar(Pendaftar mahasiswa) throws SQLException{
+    public void insertPendaftar(Pendaftar pendaftar) throws SQLException{
     Connection conn = getConnection();
         try{
             String sql = "INSERT INTO pendaftar VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, mahasiswa.getNamaKegiatan());
-            pstmt.setString(2, mahasiswa.getNim());
-            pstmt.setString(3, mahasiswa.getNama());
-            pstmt.setString(4, mahasiswa.getJk());
-            pstmt.setString(5, mahasiswa.getTingkat());
-            pstmt.setString(6, mahasiswa.getAlamat());
-            pstmt.setString(7, mahasiswa.getEmail());
-            pstmt.setString(8, mahasiswa.getNo_telp());
-            pstmt.setString(9, mahasiswa.getTtl());
+            pstmt.setString(1, pendaftar.getNamaKegiatan());
+            pstmt.setString(2, pendaftar.getNim());
+            pstmt.setString(3, pendaftar.getNama());
+            pstmt.setString(4, pendaftar.getJk());
+            pstmt.setString(5, pendaftar.getTingkat());
+            pstmt.setString(6, pendaftar.getAlamat());
+            pstmt.setString(7, pendaftar.getEmail());
+            pstmt.setString(8, pendaftar.getTlpn());
+            pstmt.setString(9, pendaftar.getTtl());
             int rowsInserted = pstmt.executeUpdate();
             
             if (rowsInserted > 0) {
@@ -121,6 +121,38 @@ public class Database implements Serializable{
         return mhsList;
     }
     
+    public List<Pendaftar> getListPendaftar() throws SQLException{
+        List<Pendaftar> pfrList = new ArrayList<>();
+        Connection conn = getConnection();
+        
+        try{
+            String sql = "SELECT * FROM pendaftar";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                Pendaftar pfr = new Pendaftar();
+                pfr.setNamaKegiatan(rs.getString("nama_kegiatan"));
+                pfr.setNim(rs.getString("nim"));
+                pfr.setNama(rs.getString("nama"));
+                pfr.setJk(rs.getString("jeniskelamin"));
+                pfr.setTingkat(rs.getString("tingkat"));
+                pfr.setAlamat(rs.getString("alamat"));
+                pfr.setEmail(rs.getString("email"));
+                pfr.setTlpn(rs.getString("tlpn"));
+                pfr.setTtl(rs.getString("ttl"));
+                
+                pfrList.add(pfr);
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            if (conn!=null){
+            conn.close();
+            }
+        }
+        return pfrList;
+    }
+    
     public void updateMahasiswa(Mahasiswa mahasiswa, String nim) throws SQLException{
         Connection conn = getConnection();
         try{
@@ -152,6 +184,22 @@ public class Database implements Serializable{
             String sql = "DELETE FROM anggota WHERE nim = ?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, nim);
+            pstmt.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            if(conn!=null){
+                conn.close();
+            }
+        }
+    }
+    
+    public void deleteMahasiswaP(String nim) throws SQLException{
+        Connection conn = getConnection();
+        try{
+            String sql = "DELETE FROM pendaftar WHERE nim = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(2, nim);
             pstmt.executeUpdate();
         }catch(SQLException e){
             e.printStackTrace();

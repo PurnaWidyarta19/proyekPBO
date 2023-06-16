@@ -318,7 +318,7 @@ public class FormPendaftaran extends javax.swing.JFrame {
         mhs.setTingkat(tingkatComboBox.getSelectedItem().toString());
         mhs.setAlamat(alamatTextArea.getText());
         mhs.setEmail(emailTextField.getText());
-        mhs.setNo_telp(tlpnTextField.getText());
+        mhs.setTlpn(tlpnTextField.getText());
         String kalender = "yyyy-MM-dd";
         SimpleDateFormat fm = new SimpleDateFormat(kalender);
         String tanggal = String.valueOf(fm.format(ttlDateChooser.getDate()));
