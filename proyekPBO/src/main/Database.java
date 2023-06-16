@@ -143,4 +143,20 @@ public class Database implements Serializable{
             }
         }
     }
+    
+    public void deteleMahasiswa(String nim) throws SQLException{
+        Connection conn = getConnection();
+        try{
+            String sql = "DELETE from anggota WHERE nim = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nim);
+            pstmt.executeUpdate();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }finally{
+            if(conn!=null){
+                conn.close();
+            }
+        }
+    }
 }

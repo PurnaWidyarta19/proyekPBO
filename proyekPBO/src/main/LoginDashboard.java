@@ -17,8 +17,8 @@ public class LoginDashboard extends javax.swing.JFrame {
      */
     public LoginDashboard() {
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setResizable(false);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setResizable(false);
     }
 
     /**
@@ -52,33 +52,28 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Aplikasi Admin UKM GPA Cheby");
 
         jLabel3.setFont(new java.awt.Font("Poppins", 2, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Politeknik Statistika STIS");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1))
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(jLabel3)))
-                .addContainerGap(72, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -151,10 +146,12 @@ public class LoginDashboard extends javax.swing.JFrame {
         );
 
         bodyDesktopPane.setBackground(new java.awt.Color(0, 153, 204));
+        bodyDesktopPane.setPreferredSize(new java.awt.Dimension(1111, 504));
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
         jLabel6.setText("Hi admin, semoga harimu cerah :)");
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\hiadmin.png")); // NOI18N
 
         bodyDesktopPane.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -165,20 +162,22 @@ public class LoginDashboard extends javax.swing.JFrame {
         bodyDesktopPaneLayout.setHorizontalGroup(
             bodyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyDesktopPaneLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(bodyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(bodyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bodyDesktopPaneLayout.createSequentialGroup()
+                        .addGap(0, 59, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addGap(0, 49, Short.MAX_VALUE))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         bodyDesktopPaneLayout.setVerticalGroup(
             bodyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyDesktopPaneLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(12, 12, 12)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         footerPanel.setBackground(new java.awt.Color(0, 102, 102));
@@ -212,7 +211,7 @@ public class LoginDashboard extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bodyDesktopPane)))
+                    .addComponent(bodyDesktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
             .addComponent(footerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -222,7 +221,7 @@ public class LoginDashboard extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
-                        .addComponent(bodyDesktopPane))
+                        .addComponent(bodyDesktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE))
                     .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(1, 1, 1)
                 .addComponent(footerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

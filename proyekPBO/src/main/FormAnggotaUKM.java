@@ -42,7 +42,7 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             //isi tabel
             for(Mahasiswa mhs:
                 Database.getInstance().getListMahasiswa()){
-                dtm.addRow(new Object[]{});
+                dtm.addRow(new Object[]{mhs.getNim(), mhs.getNama(), mhs.getKelas(), mhs.getAlamat(), mhs.getEmail(), mhs.getTlpn(), mhs.getTempatLahir(), mhs.getTanggalLahir()});
             }       
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
@@ -135,10 +135,20 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         insertButton.setBackground(new java.awt.Color(204, 204, 204));
         insertButton.setText("Insert");
         insertButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertButtonActionPerformed(evt);
+            }
+        });
 
         clearButton.setBackground(new java.awt.Color(204, 204, 204));
         clearButton.setText("Clear");
         clearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,15 +175,12 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(insertButton)
                         .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(tanggalLahirDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(tempatLahirTextField)))
-                        .addContainerGap())))
+                            .addComponent(tanggalLahirDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tempatLahirTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +239,7 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(clearButton)
                             .addComponent(insertButton))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(109, 121, 115));
@@ -258,6 +265,11 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         hapusButton.setBackground(new java.awt.Color(204, 204, 204));
         hapusButton.setText("Hapus Data");
         hapusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hapusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hapusButtonActionPerformed(evt);
+            }
+        });
 
         editButton.setBackground(new java.awt.Color(204, 204, 204));
         editButton.setText("Edit Data");
@@ -388,6 +400,50 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_dataAnggotaTableMouseClicked
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        // TODO add your handling code here:
+        clear_form();
+    }//GEN-LAST:event_clearButtonActionPerformed
+
+    private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel dtm = (DefaultTableModel) dataAnggotaTable.getModel();
+        String nim = nimTextField.getText();
+        try{
+            Database.getInstance().deteleMahasiswa(nim);
+            JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Gagal menghapus data " + JOptionPane.ERROR_MESSAGE);
+        }
+        clear_form();
+        show_data();
+    }//GEN-LAST:event_hapusButtonActionPerformed
+
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
+        // TODO add your handling code here:
+        Mahasiswa mhs = new Mahasiswa();
+        mhs.setNim(nimTextField.getText());
+        mhs.setNama(namaTextField.getText());
+        mhs.setKelas(kelasTextField.getText());
+        mhs.setAlamat(alamatTextArea.getText());
+        mhs.setEmail(emailTextField.getText());
+        mhs.setTlpn(tlpnTextField.getText());
+        mhs.setTempatLahir(tempatLahirTextField.getText());
+        String tanggal = "yyyy-MM-dd";
+        SimpleDateFormat fm = new SimpleDateFormat(tanggal);
+        String date = String.valueOf(fm.format(tanggalLahirDateChooser.getDate()));
+        mhs.setTanggalLahir((date));
+        try{
+            Database.getInstance().insertAnggotaUKM(mhs);
+            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+            clear_form();
+            show_data();
+        }catch(HeadlessException | SQLException e){
+            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", + JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_insertButtonActionPerformed
 
     /**
      * @param args the command line arguments
