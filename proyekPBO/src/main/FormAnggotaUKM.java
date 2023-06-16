@@ -95,7 +95,6 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
         dataAnggotaTable = new javax.swing.JTable();
         hapusButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
-        filterButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -280,15 +279,6 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             }
         });
 
-        filterButton.setBackground(new java.awt.Color(204, 204, 204));
-        filterButton.setText("Filter Data");
-        filterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        filterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                filterButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -301,8 +291,6 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
                         .addComponent(hapusButton)
                         .addGap(18, 18, 18)
                         .addComponent(editButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(filterButton)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -310,11 +298,10 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hapusButton)
-                    .addComponent(editButton)
-                    .addComponent(filterButton))
+                    .addComponent(editButton))
                 .addContainerGap())
         );
 
@@ -363,10 +350,6 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_editButtonActionPerformed
-
-    private void filterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_filterButtonActionPerformed
 
     private void dataAnggotaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataAnggotaTableMouseClicked
         // TODO add your handling code here:
@@ -488,7 +471,6 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
     private javax.swing.JButton editButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;
-    private javax.swing.JButton filterButton;
     private javax.swing.JButton hapusButton;
     private javax.swing.JButton insertButton;
     private javax.swing.JLabel jLabel1;

@@ -124,7 +124,7 @@ public class Database implements Serializable{
     public void updateMahasiswa(Mahasiswa mahasiswa, String nim) throws SQLException{
         Connection conn = getConnection();
         try{
-            String sql = "UPDATE anggota SET nim=?, nama=?, kelas=?, alamat?, email=?, tlpn=?, tempat_lahir=?, tanggal_lahir=?";
+            String sql = "UPDATE anggota SET nim=?,nama=?,kelas=?,alamat?,email=?,tlpn=?,tempat_lahir=?,tanggal_lahir=?";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, mahasiswa.getNim());
             pstmt.setString(2, mahasiswa.getNama());

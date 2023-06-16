@@ -59,26 +59,26 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="namaKegiatanLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="nimLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="namaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="tingkatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="alamatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="tlpnLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ttlLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="hapusButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="daftarButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="namaKegiatanLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="nimLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="namaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="tingkatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="alamatLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="tlpnLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="ttlLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="emailTextField" max="32767" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
