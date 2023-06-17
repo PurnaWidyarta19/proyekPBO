@@ -4,15 +4,29 @@
  */
 package main;
 
+import decorator.PendaftarBasicTable;
+import decorator.PendaftarNamaKegiatanDecorator;
+import decorator.Table;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import javax.swing.RowFilter;
 /**
  *
  * @author kadekpurna22
  */
-public class FormMahasiswaP extends javax.swing.JInternalFrame {
-
+public class FormPendaftar extends javax.swing.JInternalFrame {
+    
+    private ArrayList<Pendaftar> pfrList;
+    
     private void show_data(){
         DefaultTableModel dtm = (DefaultTableModel)
         pendaftarTable.getModel();
@@ -32,15 +46,36 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    
+    private void filterTable(){
+        String namaKegiatan = namaKegiatanTextField.getText();
+        String nim = nimTextField.getText();
+        String nama = namaTextField.getText();
+        String jk = (String) jkComboBox.getSelectedItem();
+        String tingkat = (String) tingkatComboBox.getSelectedItem();
+        String alamat = alamatTextField.getText();
+        String tlpn = tlpnTextField.getText();
+        
+        //Memuat isi interfecae table
+        Table tabel = new PendaftarBasicTable();
+        
+        //Decoartor untuk fiter nama kegiatan pada tabel
+        Table namaKegiatanTable = new PendaftarNamaKegiatanDecorator(tabel, namaKegiatan);
+        
+        //Menampilkan tabel yang telah di filter pada kolom
+        pfrList = namaKegiatanTable.getList();
+    }
+    
     /**
      * Creates new form FormMahasiswaP
      */
-    public FormMahasiswaP() {
+    public FormPendaftar() throws SQLException {
         initComponents();
         show_data();
         // remove the title bar of a JInternalFrame in Java Swing
         ((javax.swing.plaf.basic.BasicInternalFrameUI)getUI()).setNorthPane(null);
         setResizable(true);
+        this.pfrList = (ArrayList<Pendaftar>) Database.getInstance().getListPendaftar();
     }
 
     /**
@@ -64,10 +99,11 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         namaKegiatanTextField = new javax.swing.JTextField();
         nimTextField = new javax.swing.JTextField();
         namaTextField = new javax.swing.JTextField();
-        jkTextField = new javax.swing.JTextField();
-        tingkatTextField = new javax.swing.JTextField();
         alamatTextField = new javax.swing.JTextField();
         tlpnTextField = new javax.swing.JTextField();
+        jkComboBox = new javax.swing.JComboBox<>();
+        tingkatComboBox = new javax.swing.JComboBox<>();
+        filterButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -94,12 +130,22 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
 
         jLabel8.setText("No.Telephone");
 
-        clearButton.setText("Clear");
-        clearButton.addActionListener(new java.awt.event.ActionListener() {
+        jkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan", " " }));
+
+        tingkatComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+
+        filterButton.setBackground(new java.awt.Color(204, 204, 204));
+        filterButton.setText("Filter");
+        filterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        filterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButtonActionPerformed(evt);
+                filterButtonActionPerformed(evt);
             }
         });
+
+        clearButton.setBackground(new java.awt.Color(204, 204, 204));
+        clearButton.setText("Hapus Filter");
+        clearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,36 +156,43 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(namaKegiatanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(alamatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nimTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(namaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tingkatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(clearButton)
-                            .addComponent(tlpnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addComponent(namaKegiatanTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(alamatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nimTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tlpnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(namaTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(jkComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tingkatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(filterButton)
+                                .addGap(81, 81, 81))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(44, 44, 44))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +214,11 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jkTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jkComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(tingkatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tingkatComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -174,6 +227,8 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tlpnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filterButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(clearButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -246,7 +301,7 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         int i = pendaftarTable.getSelectedRow();
         String nim = (String)dtm.getValueAt(i, 1);
         try{
-            Database.getInstance().deleteMahasiswaP(nim);
+            Database.getInstance().deletePendaftar(nim);
             JOptionPane.showMessageDialog(this, "Data berhasil di hapus");
         }catch(SQLException e){
             e.printStackTrace();
@@ -255,21 +310,17 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
         show_data();
     }//GEN-LAST:event_hapusButtonActionPerformed
 
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+    private void filterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterButtonActionPerformed
         // TODO add your handling code here:
-        namaKegiatanTextField.setText("");
-        nimTextField.setText("");
-        namaTextField.setText("");
-        jkTextField.setText("");
-        tingkatTextField.setText("");
-        alamatTextField.setText("");
-        tlpnTextField.setText("");
-    }//GEN-LAST:event_clearButtonActionPerformed
+        filterTable();
+        show_data();
+    }//GEN-LAST:event_filterButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamatTextField;
     private javax.swing.JButton clearButton;
+    private javax.swing.JButton filterButton;
     private javax.swing.JButton hapusButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -282,12 +333,12 @@ public class FormMahasiswaP extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jkTextField;
+    private javax.swing.JComboBox<String> jkComboBox;
     private javax.swing.JTextField namaKegiatanTextField;
     private javax.swing.JTextField namaTextField;
     private javax.swing.JTextField nimTextField;
     private javax.swing.JTable pendaftarTable;
-    private javax.swing.JTextField tingkatTextField;
+    private javax.swing.JComboBox<String> tingkatComboBox;
     private javax.swing.JTextField tlpnTextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -247,7 +247,7 @@ public class LoginDashboard extends javax.swing.JFrame {
 
     private void pendaftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendaftarButtonActionPerformed
         // TODO add your handling code here:
-        FormMahasiswaP fpendaftar = new FormMahasiswaP();
+        FormPendaftar fpendaftar = new FormPendaftar();
         bodyDesktopPane.removeAll();
         bodyDesktopPane.add(fpendaftar);
         fpendaftar.setSize(bodyDesktopPane.getWidth(), bodyDesktopPane.getHeight());

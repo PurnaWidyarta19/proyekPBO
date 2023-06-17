@@ -194,7 +194,7 @@ public class Database implements Serializable{
         }
     }
     
-    public void deleteMahasiswaP(String nim) throws SQLException{
+    public void deletePendaftar(String nim) throws SQLException{
         Connection conn = getConnection();
         try{
             String sql = "DELETE FROM pendaftar WHERE nim = ?";

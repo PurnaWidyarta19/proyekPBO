@@ -4,6 +4,7 @@
  */
 package main;
 
+import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 /**
@@ -111,6 +112,14 @@ public class LoginFrame extends javax.swing.JFrame {
         masukButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         masukButton.setForeground(new java.awt.Color(255, 255, 255));
         masukButton.setText("Login");
+        masukButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                masukButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                masukButtonMouseExited(evt);
+            }
+        });
         masukButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 masukButtonActionPerformed(evt);
@@ -216,6 +225,14 @@ public class LoginFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Login gagal", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_masukButtonActionPerformed
+
+    private void masukButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masukButtonMouseEntered
+        masukButton.setBackground(Color.red);
+    }//GEN-LAST:event_masukButtonMouseEntered
+
+    private void masukButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_masukButtonMouseExited
+        masukButton.setBackground(Color.blue);
+    }//GEN-LAST:event_masukButtonMouseExited
 
     /**
      * @param args the command line arguments
