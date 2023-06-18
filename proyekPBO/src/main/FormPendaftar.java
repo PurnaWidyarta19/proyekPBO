@@ -4,8 +4,14 @@
  */
 package main;
 
+import decorator.PendaftarAlamatDecorator;
 import decorator.PendaftarBasicTable;
+import decorator.PendaftarJenisKelaminDecorator;
+import decorator.PendaftarNamaDecorator;
 import decorator.PendaftarNamaKegiatanDecorator;
+import decorator.PendaftarNimDecorator;
+import decorator.PendaftarTingkatDecorator;
+import decorator.PendaftarTlpnDecorator;
 import decorator.Table;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -47,23 +53,47 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
         }
     }
     
+    public void show_filter(){
+        DefaultTableModel dtm = (DefaultTableModel)
+        pendaftarTable.getModel();
+        
+        //refresh tabel
+        while(dtm.getRowCount()>0){
+            dtm.removeRow(0);
+        }
+        int no = 1;
+        //isi tabel
+        for(Pendaftar pfr:
+                pfrList){
+            dtm.addRow(new Object[]{pfr.getNamaKegiatan(), pfr.getNim(), pfr.getNama(), pfr.getJk(), pfr.getAlamat(), pfr.getTingkat(), pfr.getEmail(), pfr.getTlpn(), pfr.getTtl()});
+        }
+    }
+    
     private void filterTable(){
         String namaKegiatan = namaKegiatanTextField.getText();
         String nim = nimTextField.getText();
         String nama = namaTextField.getText();
-        String jk = (String) jkComboBox.getSelectedItem();
-        String tingkat = (String) tingkatComboBox.getSelectedItem();
+        String jk = "-".equals((String)jkComboBox.getSelectedItem())?
+                "" : (String)jkComboBox.getSelectedItem();
+        String tingkat = "-".equals((String)tingkatComboBox.getSelectedItem())?
+                "" : (String)tingkatComboBox.getSelectedItem();
         String alamat = alamatTextField.getText();
         String tlpn = tlpnTextField.getText();
-        
+//        
         //Memuat isi interfecae table
         Table tabel = new PendaftarBasicTable();
         
-        //Decoartor untuk fiter nama kegiatan pada tabel
+        //Decorator untuk fiter nama kegiatan pada tabel
         Table namaKegiatanTable = new PendaftarNamaKegiatanDecorator(tabel, namaKegiatan);
+        Table nimTable = new PendaftarNimDecorator(namaKegiatanTable, nim);
+        Table namaTable = new PendaftarNamaDecorator(nimTable, nama);
+        Table jenisKelaminTable = new PendaftarJenisKelaminDecorator(namaTable, jk);
+        Table tingkatTable = new PendaftarTingkatDecorator(jenisKelaminTable, tingkat);
+        Table alamatTable = new PendaftarAlamatDecorator(tingkatTable, alamat);
+        Table tlpnTable = new PendaftarTlpnDecorator(alamatTable, tlpn);
         
         //Menampilkan tabel yang telah di filter pada kolom
-        pfrList = namaKegiatanTable.getList();
+        pfrList = tlpnTable.getList();
     }
     
     /**
@@ -130,9 +160,9 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
 
         jLabel8.setText("No.Telephone");
 
-        jkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan", " " }));
+        jkComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Laki-Laki", "Perempuan" }));
 
-        tingkatComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        tingkatComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "1", "2", "3", "4" }));
 
         filterButton.setBackground(new java.awt.Color(204, 204, 204));
         filterButton.setText("Filter");
@@ -313,7 +343,7 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
     private void filterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filterButtonActionPerformed
         // TODO add your handling code here:
         filterTable();
-        show_data();
+        show_filter();
     }//GEN-LAST:event_filterButtonActionPerformed
 
 
