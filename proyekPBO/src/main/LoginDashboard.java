@@ -115,6 +115,14 @@ public class LoginDashboard extends javax.swing.JFrame {
         pendaftarButton.setText("Pendaftar Kegiatan");
         pendaftarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         pendaftarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pendaftarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pendaftarButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pendaftarButtonMouseExited(evt);
+            }
+        });
         pendaftarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pendaftarButtonActionPerformed(evt);
@@ -126,6 +134,19 @@ public class LoginDashboard extends javax.swing.JFrame {
         outButton.setText("Log Out");
         outButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         outButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outButtonMouseExited(evt);
+            }
+        });
+        outButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\admdasbord.png")); // NOI18N
@@ -154,8 +175,8 @@ public class LoginDashboard extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(anggotaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(pendaftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(pendaftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(outButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
@@ -278,40 +299,36 @@ public class LoginDashboard extends javax.swing.JFrame {
         anggotaButton.setBackground(Warna.HOVEROUT);
     }//GEN-LAST:event_anggotaButtonMouseExited
 
+    private void outButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outButtonActionPerformed
+        // TODO add your handling code here:
+        new LoginFrame().setVisible(true);
+        dispose();
+        JOptionPane.showMessageDialog(null, "Anda berhasil logout");
+    }//GEN-LAST:event_outButtonActionPerformed
+
+    private void pendaftarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendaftarButtonMouseEntered
+        // TODO add your handling code here:
+        pendaftarButton.setBackground(Warna.HOVERIN);
+    }//GEN-LAST:event_pendaftarButtonMouseEntered
+
+    private void pendaftarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendaftarButtonMouseExited
+        // TODO add your handling code here:
+        pendaftarButton.setBackground(Warna.HOVEROUT);
+    }//GEN-LAST:event_pendaftarButtonMouseExited
+
+    private void outButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outButtonMouseEntered
+        // TODO add your handling code here:
+        pendaftarButton.setBackground(Warna.HOVERIN);
+    }//GEN-LAST:event_outButtonMouseEntered
+
+    private void outButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outButtonMouseExited
+        // TODO add your handling code here:
+        pendaftarButton.setBackground(Warna.HOVEROUT);
+    }//GEN-LAST:event_outButtonMouseExited
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginDashboard().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anggotaButton;
