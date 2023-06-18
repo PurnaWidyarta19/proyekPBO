@@ -4,17 +4,21 @@
  */
 package main;
 
+import assets.Warna;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
 /**
  *
  * @author kadekpurna22
  */
 public class LoginDashboard extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form LoginDashboard
      */
@@ -84,13 +88,22 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MENU");
 
         anggotaButton.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         anggotaButton.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\anggota.png")); // NOI18N
         anggotaButton.setText("Anggota UKM ");
-        anggotaButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        anggotaButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 0, true));
         anggotaButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        anggotaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                anggotaButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                anggotaButtonMouseExited(evt);
+            }
+        });
         anggotaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anggotaButtonActionPerformed(evt);
@@ -100,7 +113,7 @@ public class LoginDashboard extends javax.swing.JFrame {
         pendaftarButton.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         pendaftarButton.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\pendaftarfix.png")); // NOI18N
         pendaftarButton.setText("Pendaftar Kegiatan");
-        pendaftarButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pendaftarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         pendaftarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pendaftarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,46 +124,40 @@ public class LoginDashboard extends javax.swing.JFrame {
         outButton.setFont(new java.awt.Font("Sitka Small", 1, 12)); // NOI18N
         outButton.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\logout.png")); // NOI18N
         outButton.setText("Log Out");
-        outButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        outButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         outButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\admdasbord.png")); // NOI18N
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(42, 42, 42))
             .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pendaftarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(anggotaButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(outButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel4)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(pendaftarButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(anggotaButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel4)
-                .addGap(27, 27, 27)
+                .addGap(20, 20, 20)
                 .addComponent(anggotaButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(pendaftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(outButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addComponent(outButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         bodyDesktopPane.setBackground(new java.awt.Color(68, 165, 121));
@@ -174,9 +181,9 @@ public class LoginDashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(bodyDesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bodyDesktopPaneLayout.createSequentialGroup()
-                        .addGap(0, 59, Short.MAX_VALUE)
+                        .addGap(0, 65, Short.MAX_VALUE)
                         .addComponent(jLabel6)
-                        .addGap(0, 49, Short.MAX_VALUE))
+                        .addGap(0, 57, Short.MAX_VALUE))
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -220,8 +227,8 @@ public class LoginDashboard extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bodyDesktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)))
-            .addComponent(footerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bodyDesktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)))
+            .addComponent(footerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,6 +267,16 @@ public class LoginDashboard extends javax.swing.JFrame {
             Logger.getLogger(LoginDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_pendaftarButtonActionPerformed
+
+    private void anggotaButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anggotaButtonMouseEntered
+        // TODO add your handling code here:
+        anggotaButton.setBackground(Warna.HOVERIN);
+    }//GEN-LAST:event_anggotaButtonMouseEntered
+
+    private void anggotaButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anggotaButtonMouseExited
+        // TODO add your handling code here:
+        anggotaButton.setBackground(Warna.HOVEROUT);
+    }//GEN-LAST:event_anggotaButtonMouseExited
 
     /**
      * @param args the command line arguments

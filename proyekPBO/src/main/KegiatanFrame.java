@@ -4,6 +4,8 @@
  */
 package main;
 
+import assets.Warna;
+
 /**
  *
  * @author kadekpurna22
@@ -29,6 +31,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane = new javax.swing.JScrollPane();
@@ -39,7 +42,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(109, 121, 115));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 50));
 
@@ -47,21 +50,30 @@ public class KegiatanFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setText("Daftar Kegiatan Cheby");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logodikegiatan.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(132, 132, 132)
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4)))
+                .addGap(32, 32, 32))
         );
 
         jPanel2.setBackground(new java.awt.Color(34, 40, 49));
@@ -82,6 +94,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
         jScrollPane.setViewportView(rincianTextArea);
 
         kegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih daftar kegiatan...", "Pelatihan Terbuka Renang", "Pelatihan Terbuka RC", "Pendakian Umum", "PDT (Pembangunan Desa Tertinggal)", " " }));
+        kegiatanComboBox.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 0));
         kegiatanComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 kegiatanComboBoxActionPerformed(evt);
@@ -92,6 +105,15 @@ public class KegiatanFrame extends javax.swing.JFrame {
         jLabel3.setText("Tertarik untuk mengikuti kegiatan? Daftar di bawah sini");
 
         daftarButton.setText("Daftar!");
+        daftarButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
+        daftarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                daftarButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                daftarButtonMouseExited(evt);
+            }
+        });
         daftarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 daftarButtonActionPerformed(evt);
@@ -107,13 +129,18 @@ public class KegiatanFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(kegiatanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))
-                        .addContainerGap(20, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(daftarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kegiatanComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3))
+                                        .addGap(104, 104, 104)))
+                                .addGap(0, 14, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +155,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(7, 7, 7)
                 .addComponent(daftarButton)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,6 +209,16 @@ public class KegiatanFrame extends javax.swing.JFrame {
         daftar.setVisible(true);
     }//GEN-LAST:event_daftarButtonActionPerformed
 
+    private void daftarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarButtonMouseEntered
+        // TODO add your handling code here:
+        daftarButton.setBackground(Warna.HOVERIN);
+    }//GEN-LAST:event_daftarButtonMouseEntered
+
+    private void daftarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarButtonMouseExited
+        // TODO add your handling code here:
+        daftarButton.setBackground(Warna.HOVEROUT);
+    }//GEN-LAST:event_daftarButtonMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -222,6 +259,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane;

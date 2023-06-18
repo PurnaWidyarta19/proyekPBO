@@ -4,6 +4,8 @@
  */
 package main;
 
+import static assets.Warna.HOVERIN;
+import static assets.Warna.HOVEROUT;
 import javax.swing.JOptionPane;
 import java.text.SimpleDateFormat;
 import java.awt.HeadlessException;
@@ -120,6 +122,15 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         });
 
         hapusButton.setText("Hapus");
+        hapusButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hapusButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                hapusButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                hapusButtonMouseExited(evt);
+            }
+        });
         hapusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hapusButtonActionPerformed(evt);
@@ -127,6 +138,15 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         });
 
         daftarButton.setText("Daftar");
+        daftarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        daftarButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                daftarButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                daftarButtonMouseExited(evt);
+            }
+        });
         daftarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 daftarButtonActionPerformed(evt);
@@ -309,6 +329,26 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_daftarButtonActionPerformed
+
+    private void daftarButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarButtonMouseEntered
+        // TODO add your handling code here:
+        daftarButton.setBackground(HOVERIN);
+    }//GEN-LAST:event_daftarButtonMouseEntered
+
+    private void daftarButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_daftarButtonMouseExited
+        // TODO add your handling code here:
+        daftarButton.setBackground(HOVEROUT);
+    }//GEN-LAST:event_daftarButtonMouseExited
+
+    private void hapusButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hapusButtonMouseEntered
+        // TODO add your handling code here:
+        daftarButton.setBackground(HOVERIN);
+    }//GEN-LAST:event_hapusButtonMouseEntered
+
+    private void hapusButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hapusButtonMouseExited
+        // TODO add your handling code here:
+        daftarButton.setBackground(HOVEROUT);
+    }//GEN-LAST:event_hapusButtonMouseExited
 
     /**
      * @param args the command line arguments
