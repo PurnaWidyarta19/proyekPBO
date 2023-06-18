@@ -4,6 +4,9 @@
  */
 package main;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
@@ -246,12 +249,16 @@ public class LoginDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_anggotaButtonActionPerformed
 
     private void pendaftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendaftarButtonActionPerformed
-        // TODO add your handling code here:
-        FormPendaftar fpendaftar = new FormPendaftar();
-        bodyDesktopPane.removeAll();
-        bodyDesktopPane.add(fpendaftar);
-        fpendaftar.setSize(bodyDesktopPane.getWidth(), bodyDesktopPane.getHeight());
-        fpendaftar.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            FormPendaftar fpendaftar = new FormPendaftar();
+            bodyDesktopPane.removeAll();
+            bodyDesktopPane.add(fpendaftar);
+            fpendaftar.setSize(bodyDesktopPane.getWidth(), bodyDesktopPane.getHeight());
+            fpendaftar.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_pendaftarButtonActionPerformed
 
     /**

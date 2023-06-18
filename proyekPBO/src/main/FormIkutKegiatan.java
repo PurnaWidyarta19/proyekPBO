@@ -23,7 +23,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
      */
     public FormIkutKegiatan() {
         initComponents();
-        setResizable(false);
+        setResizable(true);
     }
 
     /**
@@ -60,7 +60,6 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         ttlDateChooser = new com.toedter.calendar.JDateChooser();
         lakiRadioButton = new javax.swing.JRadioButton();
         perempuanRadioButton = new javax.swing.JRadioButton();
-        closeLabel = new javax.swing.JLabel();
         namaKegiatanComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,8 +69,10 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Poppins Black", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulir Pendaftaran");
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\formdaftar.png")); // NOI18N
 
         namaKegiatanLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,14 +143,6 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         perempuanRadioButton.setForeground(new java.awt.Color(255, 255, 255));
         perempuanRadioButton.setText("Perempuan");
 
-        closeLabel.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\close.png")); // NOI18N
-        closeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        closeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeLabelMouseClicked(evt);
-            }
-        });
-
         namaKegiatanComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih kegiatan.....", "Pelatihan Internal Renang", "Pelatihan Internal RC", "Pendakian Umum", "PDT (Pembangunan Desa Tertinggal)" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -157,56 +150,46 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(namaKegiatanLabel)
-                    .addComponent(nimLabel)
-                    .addComponent(namaLabel)
-                    .addComponent(jkLabel)
-                    .addComponent(tingkatLabel)
-                    .addComponent(alamatLabel)
-                    .addComponent(tlpnLabel)
-                    .addComponent(ttlLabel)
-                    .addComponent(emailLabel))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(hapusButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(daftarButton)
-                        .addGap(35, 35, 35))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailTextField)
-                            .addComponent(jLabel2)
-                            .addComponent(lakiRadioButton)
-                            .addComponent(perempuanRadioButton)
-                            .addComponent(tingkatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(namaTextField)
-                            .addComponent(nimTextField)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                            .addComponent(ttlDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tlpnTextField)
-                            .addComponent(namaKegiatanComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(57, 57, 57)
-                .addComponent(closeLabel)
-                .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namaKegiatanLabel)
+                            .addComponent(nimLabel)
+                            .addComponent(namaLabel)
+                            .addComponent(jkLabel)
+                            .addComponent(tingkatLabel)
+                            .addComponent(alamatLabel)
+                            .addComponent(tlpnLabel)
+                            .addComponent(ttlLabel)
+                            .addComponent(emailLabel))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(hapusButton)
+                                .addGap(71, 71, 71)
+                                .addComponent(daftarButton))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(emailTextField)
+                                .addComponent(lakiRadioButton)
+                                .addComponent(perempuanRadioButton)
+                                .addComponent(tingkatComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(namaTextField)
+                                .addComponent(nimTextField)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                .addComponent(ttlDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(tlpnTextField)
+                                .addComponent(namaKegiatanComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(closeLabel)))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -247,11 +230,11 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ttlLabel)
                     .addComponent(ttlDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hapusButton)
-                    .addComponent(daftarButton))
-                .addGap(14, 14, 14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(daftarButton)
+                    .addComponent(hapusButton))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -259,7 +242,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -298,11 +281,6 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_nimTextFieldKeyTyped
-
-    private void closeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeLabelMouseClicked
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_closeLabelMouseClicked
 
     private void daftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarButtonActionPerformed
         // TODO add your handling code here:
@@ -371,7 +349,6 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JTextArea alamatTextArea;
-    private javax.swing.JLabel closeLabel;
     private javax.swing.JButton daftarButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JTextField emailTextField;

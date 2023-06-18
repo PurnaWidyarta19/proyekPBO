@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author kadekpurna22
  */
-public class PendaftarNamaKegiatanDecorator extends PendaftarBasicTable{
+public class PendaftarNamaKegiatanDecorator extends DecoratorTable{
     private final String nama_kegiatan;
     
     public PendaftarNamaKegiatanDecorator(Table decoratedTable, String nama_kegiatan){
