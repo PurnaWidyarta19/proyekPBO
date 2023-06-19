@@ -18,7 +18,7 @@ import java.awt.event.KeyListener;
  *
  * @author kadekpurna22
  */
-public class FormIkutKegiatan extends javax.swing.JFrame {
+public class FormPendataranKegiatan extends javax.swing.JFrame {
     
     private boolean isValidateEmail(String nim, String domain){
         String email = emailTextField.getText();
@@ -41,7 +41,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
     /**
      * Creates new form FormPendaftaran
      */
-    public FormIkutKegiatan() {
+    public FormPendataranKegiatan() {
         initComponents();
         setResizable(true);
     }

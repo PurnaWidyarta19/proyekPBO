@@ -205,7 +205,7 @@ public class KegiatanFrame extends javax.swing.JFrame {
 
     private void daftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarButtonActionPerformed
         // TODO add your handling code here:
-        FormIkutKegiatan daftar = new FormIkutKegiatan();
+        FormPendataranKegiatan daftar = new FormPendataranKegiatan();
         daftar.setVisible(true);
         dispose();
     }//GEN-LAST:event_daftarButtonActionPerformed
