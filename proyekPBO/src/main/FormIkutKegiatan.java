@@ -20,6 +20,24 @@ import java.awt.event.KeyListener;
  */
 public class FormIkutKegiatan extends javax.swing.JFrame {
     
+    private boolean isValidateEmail(String nim, String domain){
+        String email = emailTextField.getText();
+        String expectedEmail = nim + "@" + domain;
+
+        return email.equals(expectedEmail);
+    }
+    
+    private void clear_form(){
+        namaKegiatanComboBox.setSelectedItem(this);
+        nimTextField.setText("");
+        namaTextField.setText("");
+        jkbuttonGroup.clearSelection();
+        tingkatComboBox.setSelectedIndex(0);
+        alamatTextArea.setText("");
+        emailTextField.setText("");
+        tlpnTextField.setText("");
+        ttlDateChooser.setCalendar(null);
+    }
     /**
      * Creates new form FormPendaftaran
      */
@@ -64,7 +82,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         perempuanRadioButton = new javax.swing.JRadioButton();
         namaKegiatanComboBox = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(34, 40, 49));
         jPanel1.setPreferredSize(new java.awt.Dimension(500, 300));
@@ -114,6 +132,12 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         alamatTextArea.setRows(5);
         alamatTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(alamatTextArea);
+
+        emailTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailTextFieldActionPerformed(evt);
+            }
+        });
 
         tlpnTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -170,7 +194,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap(72, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +227,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
                                 .addComponent(namaKegiatanComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,9 +285,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,15 +297,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
 
     private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
         // TODO add your handling code here:
-        namaKegiatanComboBox.setSelectedItem(this);
-        nimTextField.setText("");
-        namaTextField.setText("");
-        jkbuttonGroup.clearSelection();
-        tingkatComboBox.setSelectedIndex(0);
-        alamatTextArea.setText("");
-        emailTextField.setText("");
-        tlpnTextField.setText("");
-        ttlDateChooser.setCalendar(null);
+        clear_form();
     }//GEN-LAST:event_hapusButtonActionPerformed
 
     private void tlpnTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpnTextFieldKeyTyped
@@ -324,6 +338,7 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         mhs.setTtl(tanggal);
         try{
             Database.getInstance().insertPendaftar(mhs);
+            clear_form();
             JOptionPane.showMessageDialog(null, "Anda telah Mendaftar");
         }catch(HeadlessException | SQLException e){
             JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
@@ -349,6 +364,18 @@ public class FormIkutKegiatan extends javax.swing.JFrame {
         // TODO add your handling code here:
         daftarButton.setBackground(HOVEROUT);
     }//GEN-LAST:event_hapusButtonMouseExited
+
+    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
+        // TODO add your handling code here:
+        String nim = nimTextField.getText();
+        String domain = "stis.ac.id";
+        
+        if (isValidateEmail(nim, domain)){
+            emailTextField.setToolTipText(null);
+        }else{
+            emailTextField.setToolTipText("Email yang anda masukkan salah");
+        }
+    }//GEN-LAST:event_emailTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

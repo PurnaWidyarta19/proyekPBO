@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
+import java.awt.Toolkit;
 /**
  *
  * @author kadekpurna22
@@ -54,6 +55,7 @@ public class LoginDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(new java.awt.Color(51, 255, 0));
+        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         headerPanel.setBackground(new java.awt.Color(0, 102, 102));
 

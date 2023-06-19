@@ -23,6 +23,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.RowFilter;
 /**
@@ -134,7 +136,7 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
         jkComboBox = new javax.swing.JComboBox<>();
         tingkatComboBox = new javax.swing.JComboBox<>();
         filterButton = new javax.swing.JButton();
-        clearButton = new javax.swing.JButton();
+        clearFilterButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pendaftarTable = new javax.swing.JTable();
@@ -173,9 +175,14 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
             }
         });
 
-        clearButton.setBackground(new java.awt.Color(204, 204, 204));
-        clearButton.setText("Hapus Filter");
-        clearButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearFilterButton.setBackground(new java.awt.Color(204, 204, 204));
+        clearFilterButton.setText("Hapus Filter");
+        clearFilterButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearFilterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearFilterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,7 +228,7 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
                                 .addComponent(filterButton)
                                 .addGap(81, 81, 81))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(clearFilterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -260,7 +267,7 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(filterButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(clearButton)
+                .addComponent(clearFilterButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -346,10 +353,29 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
         show_filter();
     }//GEN-LAST:event_filterButtonActionPerformed
 
+    private void clearFilterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearFilterButtonActionPerformed
+        // TODO add your handling code here:
+        namaKegiatanTextField.setText("");
+        nimTextField.setText("");
+        namaTextField.setText("");
+        jkComboBox.setSelectedIndex(0);
+        tingkatComboBox.setSelectedIndex(0);
+        alamatTextField.setText("");
+        tlpnTextField.setText("");
+        
+        try {
+            pfrList = (ArrayList<Pendaftar>) Database.getInstance().getListPendaftar();
+            show_data();
+        } catch (SQLException ex) {
+            Logger.getLogger(FormPendaftar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_clearFilterButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamatTextField;
-    private javax.swing.JButton clearButton;
+    private javax.swing.JButton clearFilterButton;
     private javax.swing.JButton filterButton;
     private javax.swing.JButton hapusButton;
     private javax.swing.JLabel jLabel1;

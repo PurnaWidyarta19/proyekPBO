@@ -4,6 +4,7 @@
  */
 package main;
 
+import java.awt.Toolkit;
 /**
  *
  * @author kadekpurna22
@@ -32,7 +33,7 @@ public class Dashboard extends javax.swing.JFrame {
         daftarButton = new javax.swing.JButton();
         loginadmButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         jPanel1.setBackground(new java.awt.Color(34, 40, 49));
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 350));
