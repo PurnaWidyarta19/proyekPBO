@@ -48,8 +48,22 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
             //isi tabel
             for(Pendaftar pfr:
                 Database.getInstance().getListPendaftar()){
-                dtm.addRow(new Object[]{pfr.getNamaKegiatan(), pfr.getNim(), pfr.getNama(), pfr.getJk(), pfr.getAlamat(), pfr.getTingkat(), pfr.getEmail(), pfr.getTlpn(), pfr.getTtl()});
-            }       
+                dtm.addRow(new Object[]{
+                    pfr.getNamaKegiatan(), 
+                    pfr.getNim(), 
+                    pfr.getNama(), 
+                    pfr.getJk(), 
+                    pfr.getTingkat(),
+                    pfr.getAlamat(), 
+                    pfr.getEmail(), 
+                    pfr.getTlpn(), 
+                    pfr.getTtl()});
+            } 
+            // Adjust the preferred height of the JScrollPane to show all rows
+            int rowHeight = pendaftarTable.getRowHeight();
+            int rowCount = dtm.getRowCount();
+            int preferredHeight = rowHeight * rowCount;
+            jScrollPane1.setPreferredSize(new Dimension(jScrollPane1.getPreferredSize().width, preferredHeight));
         }catch(SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -67,7 +81,16 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
         //isi tabel
         for(Pendaftar pfr:
                 pfrList){
-            dtm.addRow(new Object[]{pfr.getNamaKegiatan(), pfr.getNim(), pfr.getNama(), pfr.getJk(), pfr.getAlamat(), pfr.getTingkat(), pfr.getEmail(), pfr.getTlpn(), pfr.getTtl()});
+            dtm.addRow(new Object[]{
+                pfr.getNamaKegiatan(), 
+                pfr.getNim(), 
+                pfr.getNama(), 
+                pfr.getJk(), 
+                pfr.getAlamat(), 
+                pfr.getTingkat(), 
+                pfr.getEmail(), 
+                pfr.getTlpn(), 
+                pfr.getTtl()});
         }
     }
     
@@ -273,17 +296,18 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(446, 348));
+        jScrollPane1.setViewportView(pendaftarTable);
+
         pendaftarTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Nama Kegiatan", "NIM", "Nama", "Jenis Kelamin", "Tingkat", "Alamat", "Email", "No.Telephone", "Tanggal Lahir"
+                "Nama Kegiatan", "NIM", "Nama", "Jenis Kelamin", "Tingkat", "Alamat", "Email", "No.Telepon", "Tanggal Lahir"
             }
         ));
+        pendaftarTable.setMinimumSize(new java.awt.Dimension(120, 80));
         jScrollPane1.setViewportView(pendaftarTable);
 
         hapusButton.setText("Hapus Pendaftar");
@@ -300,18 +324,16 @@ public class FormPendaftar extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(hapusButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(528, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hapusButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

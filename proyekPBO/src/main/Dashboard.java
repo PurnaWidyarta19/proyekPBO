@@ -60,6 +60,7 @@ public class Dashboard extends javax.swing.JFrame {
         loginadmButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         loginadmButton.setIcon(new javax.swing.ImageIcon("D:\\Documents\\Java\\proyekPBO\\proyekPBO\\src\\assets\\loginadmin.png")); // NOI18N
         loginadmButton.setText("Login Admin");
+        loginadmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginadmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginadmButtonActionPerformed(evt);
