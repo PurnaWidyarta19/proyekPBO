@@ -3,220 +3,228 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="-97.94434991273991" y="229.60992670157066">main.Database</node>
-    <node x="301.1181500872601" y="228.61044328097734">main.Mahasiswa</node>
-    <node x="463.72226139480085" y="729.3668411867365">main.LoginDashboard</node>
-    <node x="-255.7220886561954" y="1099.1932286212914">main.KegiatanFrame</node>
-    <node x="1091.8867948900524" y="-65.42448686910994">decorator.Table</node>
-    <node x="-460.50684991273994" y="740.0">main.FormPendataranKegiatan</node>
-    <node x="765.741420208064" y="229.60992670157066">decorator.PendaftarNamaKegiatanDecorator</node>
-    <node x="733.2979682010833" y="1052.7741710296682">main.LoginFrame</node>
-    <node x="1382.324722127785" y="360.6104432809773">decorator.PendaftarNamaDecorator</node>
-    <node x="1570.5" y="229.60992670157066">decorator.PendaftarJenisKelaminDecorator</node>
-    <node x="934.0" y="679.5451727748691">main.FormPendaftar</node>
-    <node x="43.36097731239113" y="729.3668411867365">main.FormAnggotaUKM</node>
-    <node x="1158.273022302305" y="229.60992670157066">decorator.PendaftarTingkatDecorator</node>
-    <node x="1351.0316020942407" y="91.30496335078533">decorator.DecoratorTable</node>
-    <node x="483.9145062813624" y="83.0">decorator.PendaftarBasicTable</node>
-    <node x="612.1314935064934" y="360.6104432809773">decorator.PendaftarTlpnDecorator</node>
-    <node x="-36.735959860384014" y="83.0">main.Serializable</node>
-    <node x="-383.00684991273994" y="228.61044328097734">main.Pendaftar</node>
-    <node x="176.57875807891935" y="1110.1932286212914">main.Dashboard</node>
-    <node x="963.5" y="360.6104432809773">decorator.PendaftarAlamatDecorator</node>
-    <node x="1784.3759053738584" y="360.6104432809773">decorator.PendaftarNimDecorator</node>
+    <node x="1613.1069223069014" y="1107.6826727085481">main.LoginFrame</node>
+    <node x="504.0890776519053" y="338.8218446961894">decorator.Table</node>
+    <node x="2154.393973223482" y="1092.9585944387234">main.Dashboard</node>
+    <node x="1678.9029763130798" y="447.4133635427395">main.Database</node>
+    <node x="74.83865050543221" y="722.696589907312">decorator.PendaftarNamaKegiatanDecorator</node>
+    <node x="803.5435007209064" y="722.696589907312">decorator.PendaftarTingkatDecorator</node>
+    <node x="617.6680634397529" y="604.2686170957775">decorator.PendaftarNamaDecorator</node>
+    <node x="1678.9029763130798" y="779.4304140061795">main.FormAnggotaUKM</node>
+    <node x="1055.8198713903207" y="1041.6826727085481">main.LoginDashboard</node>
+    <node x="529.3456809661523" y="1041.6826727085481">main.FormPendaftar</node>
+    <node x="1751.9029763130798" y="342.014522760041">main.Serializable</node>
+    <node x="446.0890776519053" y="722.696589907312">decorator.PendaftarNimDecorator</node>
+    <node x="984.4467723995883" y="604.2686170957775">decorator.PendaftarTlpnDecorator</node>
+    <node x="2310.553171644353" y="823.4304140061795">main.KegiatanFrame</node>
+    <node x="1455.3614238517002" y="447.41336354273955">main.Mahasiswa</node>
+    <node x="251.13203940996334" y="588.145314343484">decorator.PendaftarJenisKelaminDecorator</node>
+    <node x="2310.553171644353" y="447.4133635427395">main.FormPendataranKegiatan</node>
+    <node x="942.5659681644227" y="424.94189001029855">decorator.DecoratorTable</node>
+    <node x="-39.03592878995454" y="429.703000139205">decorator.PendaftarBasicTable</node>
+    <node x="2042.8197546446959" y="447.41336354273955">main.Pendaftar</node>
+    <node x="1151.4116333676623" y="722.696589907312">decorator.PendaftarAlamatDecorator</node>
   </nodes>
   <notes />
   <edges>
     <edge source="main.FormPendaftar" target="decorator.PendaftarNamaDecorator" relationship="CREATE">
-      <point x="78.89956880977184" y="-93.08127005933795" />
-      <point x="1175.3995688097718" y="589.1344552879582" />
-      <point x="1512.324722127785" y="589.1344552879582" />
-      <point x="0.0" y="53.0" />
+      <point x="0.0" y="-105.5" />
+      <point x="691.8456809661523" y="863.0178425751598" />
+      <point x="747.6680634397529" y="863.0178425751598" />
+      <point x="0.0" y="52.0" />
     </edge>
     <edge source="decorator.PendaftarBasicTable" target="decorator.Table" relationship="REALIZATION">
-      <point x="0.0" y="-40.0" />
-      <point x="577.4145062813624" y="71.7106836998255" />
-      <point x="1125.6367948900524" y="71.7106836998255" />
+      <point x="0.0" y="-39.5" />
+      <point x="54.46407121004546" y="381.30474038311013" />
+      <point x="537.8390776519053" y="381.30474038311013" />
       <point x="-33.75" y="27.0" />
     </edge>
     <edge source="main.Database" target="main.Serializable" relationship="REALIZATION">
-      <point x="68.25" y="-143.0" />
-      <point x="106.80565008726009" y="413.6104432809773" />
-      <point x="26.764040139615986" y="413.6104432809773" />
-      <point x="0.0" y="14.5" />
+      <point x="0.2208573234531741" y="-134.33436438008903" />
+      <point x="1815.623833636533" y="454.57899916265046" />
+      <point x="1815.623833636533" y="364.93928324436297" />
+      <point x="-2.36208144563966" y="8.42476048432195" />
     </edge>
     <edge source="main.FormPendataranKegiatan" target="main.Pendaftar" relationship="CREATE">
-      <point x="0.0" y="-161.0" />
-      <point x="-303.50684991273994" y="895.8052216404886" />
-      <point x="-303.50684991273994" y="895.8052216404886" />
-      <point x="0.0" y="218.0" />
-    </edge>
-    <edge source="main.LoginDashboard" target="main.FormAnggotaUKM" relationship="CREATE">
-      <point x="0.0" y="-139.0" />
-      <point x="626.2222613948009" y="832.2976614310647" />
-      <point x="203.36097731239113" y="832.2976614310647" />
-      <point x="0.0" y="117.0" />
+      <point x="0.0" y="-149.5" />
+      <point x="2463.553171644353" y="552.0" />
+      <point x="2122.319754644696" y="552.0" />
+      <point x="0.0" y="217.0" />
     </edge>
     <edge source="main.FormAnggotaUKM" target="main.Mahasiswa" relationship="CREATE">
-      <point x="0.0" y="-117.0" />
-      <point x="203.36097731239113" y="663.9886422338568" />
-      <point x="375.6181500872601" y="663.9886422338568" />
-      <point x="0.0" y="185.0" />
+      <point x="0.0" y="-127.5" />
+      <point x="1838.9029763130798" y="906.9304140061795" />
+      <point x="1529.8614238517002" y="906.9304140061795" />
+      <point x="0.0" y="184.0" />
+    </edge>
+    <edge source="main.LoginDashboard" target="main.FormAnggotaUKM" relationship="CREATE">
+      <point x="0.0" y="-138.5" />
+      <point x="1218.3198713903207" y="1063.0479316168899" />
+      <point x="1486.2019756265022" y="1063.0479316168899" />
+      <point x="1486.2019756265022" y="994.9645149330589" />
+      <point x="1838.9029763130798" y="994.9645149330589" />
+      <point x="0.0" y="127.5" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarBasicTable" relationship="CREATE">
-      <point x="-127.40072522164155" y="-103.05091976265362" />
-      <point x="969.0992747783584" y="646.8427347993019" />
-      <point x="577.4145062813624" y="646.8427347993019" />
-      <point x="0.0" y="40.0" />
+      <point x="-120.25660331424695" y="-104.45484006821857" />
+      <point x="571.5890776519053" y="981.3615999393616" />
+      <point x="54.46407121004546" y="981.3615999393616" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="decorator.PendaftarJenisKelaminDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="1718.5" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
-    </edge>
-    <edge source="decorator.PendaftarNamaKegiatanDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="918.741420208064" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-52.0" />
+      <point x="399.13203940996334" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="decorator.PendaftarAlamatDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="1096.5" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-52.0" />
+      <point x="1284.4116333676623" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="decorator.PendaftarTingkatDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="1291.773022302305" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-52.0" />
+      <point x="937.0435007209064" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="decorator.PendaftarNamaKegiatanDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
+      <point x="0.0" y="-52.0" />
+      <point x="227.8386505054322" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="main.Mahasiswa" target="main.Serializable" relationship="REALIZATION">
-      <point x="0.0" y="-185.0" />
-      <point x="375.6181500872601" y="176.25" />
-      <point x="59.292180607328646" y="176.25" />
-      <point x="32.52814046771266" y="13.96547713787129" />
+      <point x="0.0" y="-184.0" />
+      <point x="1529.8614238517002" y="356.514522760041" />
+      <point x="1817.2173853161378" y="356.514522760041" />
+      <point x="1817.2173853161378" y="363.764522760041" />
+      <point x="1815.4029763130798" y="363.764522760041" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarJenisKelaminDecorator" relationship="CREATE">
-      <point x="113.2319119860365" y="-108.49509707504455" />
-      <point x="1209.7319119860365" y="620.7106836998256" />
-      <point x="1718.5" y="620.7106836998256" />
-      <point x="0.0" y="53.0" />
+      <point x="-64.56212081158992" y="-102.32138206912487" />
+      <point x="627.2835601545623" y="939.4597362554067" />
+      <point x="414.81088199893816" y="939.4597362554067" />
+      <point x="15.678842588974817" y="49.08643585296841" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarTlpnDecorator" relationship="CREATE">
-      <point x="-74.21791810122272" y="-93.08127005933795" />
-      <point x="1022.2820818987773" y="606.5558226876091" />
-      <point x="737.6314935064934" y="606.5558226876091" />
-      <point x="0.0" y="53.0" />
+      <point x="50.53232387636149" y="-106.06429083946523" />
+      <point x="742.3780048425137" y="944.3138210669414" />
+      <point x="1109.9467723995883" y="944.3138210669414" />
+      <point x="0.0" y="52.0" />
     </edge>
     <edge source="main.Database" target="main.Pendaftar" relationship="CREATE">
-      <point x="-68.25" y="-143.0" />
-      <point x="-29.69434991273991" y="413.61044328097734" />
-      <point x="-303.50684991273994" y="413.61044328097734" />
-      <point x="0.0" y="218.0" />
-    </edge>
-    <edge source="decorator.PendaftarNamaDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="1512.324722127785" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
+      <point x="-68.25" y="-141.5" />
+      <point x="1747.1529763130798" y="565.1750388715964" />
+      <point x="2122.319754644696" y="565.1750388715964" />
+      <point x="0.0" y="217.0" />
     </edge>
     <edge source="main.Pendaftar" target="main.Serializable" relationship="REALIZATION">
-      <point x="0.0" y="-218.0" />
-      <point x="-303.50684991273994" y="176.25" />
-      <point x="-4.6769028132646895" y="176.25" />
-      <point x="-31.440942952880675" y="15.326521465969023" />
+      <point x="0.0" y="-217.0" />
+      <point x="2122.319754644696" y="356.514522760041" />
+      <point x="1815.4029763130798" y="356.514522760041" />
+      <point x="0.0" y="14.5" />
     </edge>
-    <edge source="main.FormPendaftar" target="decorator.PendaftarNamaKegiatanDecorator" relationship="CREATE">
-      <point x="-30.494369061083034" y="-105.22859068761" />
-      <point x="1066.005630938917" y="563.0024041884817" />
-      <point x="918.741420208064" y="563.0024041884817" />
-      <point x="0.0" y="53.0" />
+    <edge source="decorator.PendaftarNamaDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
+      <point x="0.0" y="-52.0" />
+      <point x="747.6680634397529" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarAlamatDecorator" relationship="CREATE">
-      <point x="0.0" y="-106.0" />
-      <point x="0.0" y="53.0" />
+      <point x="106.67595543145933" y="-101.38565487654046" />
+      <point x="798.5216363976116" y="981.3615999393616" />
+      <point x="1284.4116333676623" y="981.3615999393616" />
+      <point x="0.0" y="52.0" />
+    </edge>
+    <edge source="main.FormPendaftar" target="decorator.PendaftarNamaKegiatanDecorator" relationship="CREATE">
+      <point x="-90.76248220396883" y="-104.1928364542947" />
+      <point x="601.0831987621834" y="961.456343235098" />
+      <point x="227.8386505054322" y="961.456343235098" />
+      <point x="0.0" y="52.0" />
     </edge>
     <edge source="main.LoginFrame" target="main.LoginDashboard" relationship="CREATE">
-      <point x="0.0" y="-73.0" />
-      <point x="887.7979682010833" y="1125.7741710296682" />
-      <point x="578.4965656684107" y="1125.7741710296682" />
-      <point x="-47.7256957263902" y="134.39407190226905" />
+      <point x="0.0" y="72.5" />
+      <point x="1767.6069223069014" y="1187.7440827346654" />
+      <point x="1218.3198713903207" y="1187.7440827346654" />
+      <point x="0.0" y="-138.5" />
     </edge>
     <edge source="main.LoginDashboard" target="main.LoginFrame" relationship="CREATE">
-      <point x="16.515596559822598" y="143.1047556020958" />
-      <point x="642.7378579546235" y="1052.7741710296682" />
-      <point x="0.0" y="-73.0" />
+      <point x="0.0" y="-138.5" />
+      <point x="1218.3198713903207" y="1124.5621467353246" />
+      <point x="1767.6069223069014" y="1124.5621467353246" />
+      <point x="0.0" y="72.5" />
     </edge>
     <edge source="decorator.PendaftarNimDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="2.2737367544323206E-13" y="-53.0" />
-      <point x="1909.8759053738586" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
+      <point x="0.0" y="-52.0" />
+      <point x="571.5890776519053" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="main.KegiatanFrame" target="main.FormPendataranKegiatan" relationship="CREATE">
-      <point x="0.0" y="-84.0" />
-      <point x="-84.22208865619541" y="1171.8481591623038" />
-      <point x="-303.50684991273994" y="1171.8481591623038" />
-      <point x="0.0" y="161.0" />
+      <point x="0.0" y="-83.5" />
+      <point x="2482.053171644353" y="968.0" />
+      <point x="2463.553171644353" y="968.0" />
+      <point x="0.0" y="149.5" />
     </edge>
     <edge source="decorator.DecoratorTable" target="decorator.Table" relationship="REALIZATION">
-      <point x="-42.0" y="-40.0" />
-      <point x="1393.0316020942407" y="71.7106836998255" />
-      <point x="1145.8444912251302" y="71.7106836998255" />
-      <point x="-13.542303664922201" y="26.473092356020302" />
+      <point x="-42.0" y="-39.5" />
+      <point x="984.5659681644227" y="383.8386914471683" />
+      <point x="64.35757328829334" y="18.0168467509789" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarNimDecorator" relationship="CREATE">
-      <point x="140.45279854799128" y="-106.31742615008818" />
-      <point x="1236.9527985479913" y="646.8427347993019" />
-      <point x="1909.8759053738584" y="646.8427347993019" />
-      <point x="0.0" y="53.0" />
+      <point x="-41.16894099696583" y="-104.1928364542947" />
+      <point x="650.6767399691864" y="918.3432130807828" />
+      <point x="571.5890776519053" y="918.3432130807828" />
+      <point x="0.0" y="52.0" />
     </edge>
     <edge source="decorator.DecoratorTable" target="decorator.Table" relationship="TO_ONE">
-      <point x="42.0" y="-40.0" />
-      <point x="1477.0316020942407" y="-33.72810376265333" />
-      <point x="70.95132822338473" y="4.696383106456608" />
+      <point x="-9.343788715414007" y="-40.44880541132801" />
+      <point x="1017.2221794490086" y="360.6326570710612" />
+      <point x="66.60331855049725" y="-5.1891876251281985" />
     </edge>
     <edge source="decorator.PendaftarTlpnDecorator" target="decorator.DecoratorTable" relationship="GENERALIZATION">
-      <point x="0.0" y="-53.0" />
-      <point x="737.6314935064934" y="189.0" />
-      <point x="1435.0316020942407" y="189.0" />
-      <point x="0.0" y="40.0" />
-    </edge>
-    <edge source="main.Database" target="main.Mahasiswa" relationship="CREATE">
-      <point x="-68.25" y="-143.0" />
-      <point x="-29.69434991273991" y="413.61044328097734" />
-      <point x="375.6181500872601" y="413.61044328097734" />
-      <point x="0.0" y="185.0" />
+      <point x="0.0" y="-52.0" />
+      <point x="1109.9467723995883" y="552.0" />
+      <point x="1026.5659681644227" y="552.0" />
+      <point x="0.0" y="39.5" />
     </edge>
     <edge source="main.Dashboard" target="main.LoginFrame" relationship="CREATE">
-      <point x="0.0" y="-73.0" />
-      <point x="339.07875807891935" y="1172.0810666666669" />
-      <point x="887.7979682010833" y="1172.0810666666669" />
-      <point x="0.0" y="73.0" />
+      <point x="-35.340900888649685" y="-70.0014867812979" />
+      <point x="2281.5530723348324" y="1129.5" />
+      <point x="1767.6069223069014" y="1129.5" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="main.Database" target="main.Mahasiswa" relationship="CREATE">
+      <point x="-68.25" y="-141.5" />
+      <point x="1747.1529763130798" y="566.4418900102985" />
+      <point x="1529.8614238517002" y="566.4418900102985" />
+      <point x="0.0" y="184.0" />
     </edge>
     <edge source="main.Dashboard" target="main.KegiatanFrame" relationship="CREATE">
-      <point x="0.0" y="-73.0" />
-      <point x="339.07875807891935" y="1200.6629975567193" />
-      <point x="-84.22208865619541" y="1200.6629975567193" />
-      <point x="0.0" y="84.0" />
+      <point x="0.0" y="-72.5" />
+      <point x="2358.1837728287" y="1092.9585944387234" />
+      <point x="2358.1837728287" y="1099.5461138745213" />
+      <point x="2316.893973223482" y="1099.5461138745213" />
+      <point x="2316.893973223482" y="1041.6945042224515" />
+      <point x="2482.053171644353" y="1041.6945042224515" />
+      <point x="0.0" y="83.5" />
     </edge>
     <edge source="main.FormPendaftar" target="decorator.PendaftarTingkatDecorator" relationship="CREATE">
-      <point x="45.724113312389136" y="-107.40626161256637" />
-      <point x="1142.2241133123891" y="541.2256949389181" />
-      <point x="1291.773022302305" y="541.2256949389181" />
-      <point x="0.0" y="53.0" />
+      <point x="19.653326521057807" y="-106.06429083946523" />
+      <point x="711.4990074872101" y="914.034446961895" />
+      <point x="937.0435007209064" y="914.034446961895" />
+      <point x="0.0" y="52.0" />
     </edge>
     <edge source="main.LoginDashboard" target="main.FormPendaftar" relationship="CREATE">
-      <point x="0.0" y="-139.0" />
-      <point x="626.2222613948009" y="800.8041884816754" />
-      <point x="1096.5" y="800.8041884816754" />
-      <point x="0.0" y="106.0" />
+      <point x="0.0" y="-138.5" />
+      <point x="1218.3198713903207" y="1193.4547048561894" />
+      <point x="-0.5301079878565815" y="46.27203214764131" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="0.30094537815126066" showDependencies="true" x="679.679046645723" y="627.1993387783616" />
+  <settings layout="Hierarchic" zoom="0.3614591009579956" showDependencies="true" x="1307.0" y="828.5" />
   <SelectedNodes />
   <Categories>
     <Category>Constructors</Category>

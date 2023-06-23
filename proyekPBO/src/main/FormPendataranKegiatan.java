@@ -20,11 +20,58 @@ import java.awt.event.KeyListener;
  */
 public class FormPendataranKegiatan extends javax.swing.JFrame {
     
-    private boolean isValidateEmail(String nim, String domain){
+    private boolean validateInput(){
+        //Validate nim 
+        if (nimTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Masukkan NIM anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validate nama 
+        if (namaTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Masukkan Nama anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validate jenis kelamin
+        if (jkbuttonGroup.getSelection() == null) {
+            JOptionPane.showMessageDialog(null, "Pilih Jenis Kelamin anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate alamat
+        if (alamatTextArea.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Masukkan Alamat anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate email
+        if (emailTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Masukkan Email anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate no telephone
+        if (tlpnTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Masukkan No.Telephone anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate tanggal lahir
+        if (ttlDateChooser.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih tanggal lahir anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate email
         String email = emailTextField.getText();
-        String expectedEmail = nim + "@" + domain;
-
-        return email.equals(expectedEmail);
+        String emailPattern = nimTextField.getText() + "@stis.ac.id";
+        if (!email.equals(emailPattern)) {
+            JOptionPane.showMessageDialog(this, "Email harus dalam format 'nim@stis.ac.id'", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
     }
     
     private void clear_form(){
@@ -132,12 +179,6 @@ public class FormPendataranKegiatan extends javax.swing.JFrame {
         alamatTextArea.setRows(5);
         alamatTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(alamatTextArea);
-
-        emailTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailTextFieldActionPerformed(evt);
-            }
-        });
 
         tlpnTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -318,30 +359,32 @@ public class FormPendataranKegiatan extends javax.swing.JFrame {
 
     private void daftarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarButtonActionPerformed
         // TODO add your handling code here:
-        Pendaftar mhs = new Pendaftar();
-        mhs.setNamaKegiatan(namaKegiatanComboBox.getSelectedItem().toString());
-        mhs.setNim(nimTextField.getText());
-        mhs.setNama(namaTextField.getText());
-        if(lakiRadioButton.isSelected()){
-            mhs.setJk("Laki-Laki");
-        }
-        if(perempuanRadioButton.isSelected()){
-            mhs.setJk("Perempuan");
-        }
-        mhs.setTingkat(tingkatComboBox.getSelectedItem().toString());
-        mhs.setAlamat(alamatTextArea.getText());
-        mhs.setEmail(emailTextField.getText());
-        mhs.setTlpn(tlpnTextField.getText());
-        String kalender = "yyyy-MM-dd";
-        SimpleDateFormat fm = new SimpleDateFormat(kalender);
-        String tanggal = String.valueOf(fm.format(ttlDateChooser.getDate()));
-        mhs.setTtl(tanggal);
-        try{
-            Database.getInstance().insertPendaftar(mhs);
-            clear_form();
-            JOptionPane.showMessageDialog(null, "Anda telah Mendaftar");
-        }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+        if (validateInput()){
+            Pendaftar mhs = new Pendaftar();
+            mhs.setNamaKegiatan(namaKegiatanComboBox.getSelectedItem().toString());
+            mhs.setNim(nimTextField.getText());
+            mhs.setNama(namaTextField.getText());
+            if(lakiRadioButton.isSelected()){
+                mhs.setJk("Laki-Laki");
+            }
+            if(perempuanRadioButton.isSelected()){
+                mhs.setJk("Perempuan");
+            }
+            mhs.setTingkat(tingkatComboBox.getSelectedItem().toString());
+            mhs.setAlamat(alamatTextArea.getText());
+            mhs.setEmail(emailTextField.getText());
+            mhs.setTlpn(tlpnTextField.getText());
+            String kalender = "yyyy-MM-dd";
+            SimpleDateFormat fm = new SimpleDateFormat(kalender);
+            String tanggal = String.valueOf(fm.format(ttlDateChooser.getDate()));
+            mhs.setTtl(tanggal);
+            try{
+                Database.getInstance().insertPendaftar(mhs);
+                clear_form();
+                JOptionPane.showMessageDialog(null, "Anda telah Mendaftar");
+            }catch(HeadlessException | SQLException e){
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_daftarButtonActionPerformed
 
@@ -364,18 +407,6 @@ public class FormPendataranKegiatan extends javax.swing.JFrame {
         // TODO add your handling code here:
         daftarButton.setBackground(HOVEROUT);
     }//GEN-LAST:event_hapusButtonMouseExited
-
-    private void emailTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTextFieldActionPerformed
-        // TODO add your handling code here:
-        String nim = nimTextField.getText();
-        String domain = "stis.ac.id";
-        
-        if (isValidateEmail(nim, domain)){
-            emailTextField.setToolTipText(null);
-        }else{
-            emailTextField.setToolTipText("Email yang anda masukkan salah");
-        }
-    }//GEN-LAST:event_emailTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

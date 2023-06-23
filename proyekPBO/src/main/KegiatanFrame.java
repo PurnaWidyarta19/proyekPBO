@@ -183,20 +183,24 @@ public class KegiatanFrame extends javax.swing.JFrame {
         switch(selectedMenu){
             case "Pelatihan Terbuka Renang":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka renang adalah kegiatan yang bisa di"
-                        + "ikuti oleh semua mahasiswa STIS");
+                        + "ikuti oleh semua mahasiswa STIS. "
+                        + "Tanggal pelaksanaan: 1 September 2023");
                 break;
             case "Pelatihan Terbuka RC":
                 rincianTextArea.setText("Kegiatan pelatihan terbuka RC adalah kegiatan yang bisa di"
-                        + "ikuti oleh semua mahasiswa STIS");
+                        + "ikuti oleh semua mahasiswa STIS. "
+                        + "Tanggal pelaksanaan: Comming Soon");
                 break;
             case "Pendakian Umum":
                 rincianTextArea.setText("Kegiatan pendakian adalah kegiatan yang bisa di ikuti oleh semua mahasiswa STIS"
-                        + "dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia");
+                        + "dimana kegiatan ini adalah kegiatan pendakian sebuah gunung yang ada di Indonesia. "
+                        + "Tanggal pelaksanaan: 10 Agustus 2023");
                 break;
             case "PDT (Pembangunan Desa Tertinggal)":
                 rincianTextArea.setText("Kegiatan ini adalah open recruitment panitia yang bersedia menjadi relawan"
                         +" untuk membantu pembangunan desa tertinggal. Kagiatan ini tidak dilaksanakan setiap tahun, tetapi" 
-                        +" dilaksanakan pada tahun-tahun tertentu. Ini tergantung atas keputusan UKM GPA Cheby.");
+                        +" dilaksanakan pada tahun-tahun tertentu. Ini tergantung atas keputusan UKM GPA Cheby. "
+                        + "Tanggal pelaksanaan: 15 Agustus 2023");
                 break;
             default:
                 rincianTextArea.setText(" ");

@@ -18,6 +18,66 @@ import javax.swing.JOptionPane;
  * @author kadekpurna22
  */
 public class FormAnggotaUKM extends javax.swing.JInternalFrame {
+    
+        private boolean validateInput(){
+        //Validate nim 
+        if (nimTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "NIM anggota salah ", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validate nama 
+        if (namaTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Masukkan nama anggota", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        // Validate kelas
+        if (kelasTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Kelas tidak boleh kosong", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        //Validate alamat
+        if (alamatTextArea.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Alamat tidak boleh kosong", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate email
+        if (emailTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Masukkan Email anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate no telephone
+        if (tlpnTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Masukkan No.Telephone anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate tempat lahir
+        if (tempatLahirTextField.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Tempat lahir tidak boleh kosong", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate tanggal lahir
+        if (tanggalLahirDateChooser.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Silahkan pilih tanggal lahir anda", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        //Validate email
+        String email = emailTextField.getText();
+        String emailPattern = nimTextField.getText() + "@stis.ac.id";
+        if (!email.equals(emailPattern)) {
+            JOptionPane.showMessageDialog(this, "Email harus dalam format 'nim@stis.ac.id'", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        
+        return true;
+    }
+        
     private void clear_form(){
         nimTextField.setText("");
         namaTextField.setText("");
@@ -405,25 +465,27 @@ public class FormAnggotaUKM extends javax.swing.JInternalFrame {
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         // TODO add your handling code here:
-        Mahasiswa mhs = new Mahasiswa();
-        mhs.setNim(nimTextField.getText());
-        mhs.setNama(namaTextField.getText());
-        mhs.setKelas(kelasTextField.getText());
-        mhs.setAlamat(alamatTextArea.getText());
-        mhs.setEmail(emailTextField.getText());
-        mhs.setTlpn(tlpnTextField.getText());
-        mhs.setTempatLahir(tempatLahirTextField.getText());
-        String tanggal = "yyyy-MM-dd";
-        SimpleDateFormat fm = new SimpleDateFormat(tanggal);
-        String date = String.valueOf(fm.format(tanggalLahirDateChooser.getDate()));
-        mhs.setTanggalLahir((date));
-        try{
-            Database.getInstance().insertAnggotaUKM(mhs);
-            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
-            clear_form();
-            show_data();
-        }catch(HeadlessException | SQLException e){
-            JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", + JOptionPane.ERROR_MESSAGE);
+        if (validateInput()){
+            Mahasiswa mhs = new Mahasiswa();
+            mhs.setNim(nimTextField.getText());
+            mhs.setNama(namaTextField.getText());
+            mhs.setKelas(kelasTextField.getText());
+            mhs.setAlamat(alamatTextArea.getText());
+            mhs.setEmail(emailTextField.getText());
+            mhs.setTlpn(tlpnTextField.getText());
+            mhs.setTempatLahir(tempatLahirTextField.getText());
+            String tanggal = "yyyy-MM-dd";
+            SimpleDateFormat fm = new SimpleDateFormat(tanggal);
+            String date = String.valueOf(fm.format(tanggalLahirDateChooser.getDate()));
+            mhs.setTanggalLahir((date));
+            try{
+                Database.getInstance().insertAnggotaUKM(mhs);
+                JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+                clear_form();
+                show_data();
+            }catch(HeadlessException | SQLException e){
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan data", "Gagal", + JOptionPane.ERROR_MESSAGE);
+            }            
         }
     }//GEN-LAST:event_insertButtonActionPerformed
 
