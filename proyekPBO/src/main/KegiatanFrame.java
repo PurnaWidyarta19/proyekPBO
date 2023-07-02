@@ -5,6 +5,7 @@
 package main;
 
 import assets.Warna;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,6 +19,12 @@ public class KegiatanFrame extends javax.swing.JFrame {
     public KegiatanFrame() {
         initComponents();
         setResizable(false);
+        
+        setTitle("DafMin | Daftar Kegiatan"); // Memberikan judul pada jendela
+        
+        // Mengatur ikon jendela
+        ImageIcon icon = new ImageIcon("src/assets/logo fix.png");
+        setIconImage(icon.getImage());
     }
 
     /**

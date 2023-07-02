@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,12 @@ public class LoginFrame extends javax.swing.JFrame {
      */
     public LoginFrame() {
         initComponents();
+        
+        setTitle("DafMin | Login Admin"); // Memberikan judul pada jendela
+        
+        // Mengatur ikon jendela
+        ImageIcon icon = new ImageIcon("src/assets/logo fix.png");
+        setIconImage(icon.getImage());
     }
 
     /**

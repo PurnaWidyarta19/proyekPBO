@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 /**
  *
  * @author kadekpurna22
@@ -27,6 +28,12 @@ public class LoginDashboard extends javax.swing.JFrame {
         initComponents();
 //        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setResizable(false);
+
+        setTitle("DafMin | Dashboard Admin"); // Memberikan judul pada jendela
+        
+        // Mengatur ikon jendela
+        ImageIcon icon = new ImageIcon("src/assets/logo fix.png");
+        setIconImage(icon.getImage());
     }
 
     /**

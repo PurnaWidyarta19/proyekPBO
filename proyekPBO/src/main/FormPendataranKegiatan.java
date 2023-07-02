@@ -91,6 +91,12 @@ public class FormPendataranKegiatan extends javax.swing.JFrame {
     public FormPendataranKegiatan() {
         initComponents();
         setResizable(true);
+        
+        setTitle("DafMin | Form Pendaftarann kegiatan"); // Memberikan judul pada jendela
+        
+        // Mengatur ikon jendela
+        ImageIcon icon = new ImageIcon("src/assets/logo fix.png");
+        setIconImage(icon.getImage());
     }
 
     /**
